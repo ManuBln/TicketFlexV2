@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'TicketFlex') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -15,22 +15,58 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <style>
+         .bordes {
+    position: relative;
+}
+.bordes::after {
+    content: "";
+    /* Es necesario para que el elemento se visualice */
+    position: absolute;
+    /* Posiciona el pseudo-elemento en relación al elemento principal */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-bottom: 2px solid transparent;
+    /* Define el borde inicial (transparente) */
+    pointer-events: none;
+    /* Evita que el pseudo-elemento interfiera con los eventos del elemento principal */
+    transition: border-color 0.3s;
+    /* Agrega una transición para un efecto suave al pasar el mouse sobre el elemento */
+}
+
+.bordes:hover::after {
+    border-color: #ffffff;
+    /* Cambia el color del borde en hover (en este caso, rojo) */
+}
+    </style>
 </head>
-<body>
+<body class="bg-black">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-lg navbar-dark  p-5">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <a class="navbar-brand bordes" href="index.html" target="_self">Home</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarNav">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                    <li class="nav-item">
+                            <a class="nav-link bordes" href="#About" >About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link bordes" href="shop.blade.php" >Entradas</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link bordes" href="#Merch">Merch</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link bordes" href="#Shows">Drops</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -39,13 +75,13 @@
                         @guest
                             @if (Route::has('login'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar Sesión') }}</a>
                                 </li>
                             @endif
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarme') }}</a>
                                 </li>
                             @endif
                         @else
