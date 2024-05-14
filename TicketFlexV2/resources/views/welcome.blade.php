@@ -62,13 +62,13 @@
                             <a class="nav-link bordes" href="#About" >About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link bordes" href="{{route('shop')}}" >Entradas</a>
+                            <a class="nav-link bordes" href="" >Entradas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link bordes" href="{{route('merch')}}">Merch</a>
+                            <a class="nav-link bordes" href="">Merch</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link bordes" href="{{route('drops')}}">Drops</a>
+                            <a class="nav-link bordes" href="">Drops</a>
                         </li>
                         @if (Route::has('login'))
                                 @auth
