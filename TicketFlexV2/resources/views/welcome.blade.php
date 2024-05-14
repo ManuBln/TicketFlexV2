@@ -62,6 +62,7 @@
                             <a class="nav-link bordes" href="#About" >About</a>
                         </li>
                         <li class="nav-item">
+                          <!--  CAMBIAR ENLACE-->
                             <a class="nav-link bordes" href="shop.blade.php" >Entradas</a>
                         </li>
                         <li class="nav-item">
