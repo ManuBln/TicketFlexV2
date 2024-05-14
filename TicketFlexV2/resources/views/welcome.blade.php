@@ -51,7 +51,7 @@
         </div>
         <nav class="navbar navbar-expand-lg navbar-dark  p-5">
             <div class="container">
-                <a class="navbar-brand bordes" href="index.html" target="_self">Home</a>
+                <a class="navbar-brand bordes" href="{{route('home')}}" target="_self">Home</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -62,13 +62,13 @@
                             <a class="nav-link bordes" href="#About" >About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link bordes" href="shop.blade.php" >Entradas</a>
+                            <a class="nav-link bordes" href="{{route('shop')}}" >Entradas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link bordes" href="#Merch">Merch</a>
+                            <a class="nav-link bordes" href="{{route('merch')}}">Merch</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link bordes" href="#Shows">Drops</a>
+                            <a class="nav-link bordes" href="{{route('drops')}}">Drops</a>
                         </li>
                         @if (Route::has('login'))
                                 @auth
