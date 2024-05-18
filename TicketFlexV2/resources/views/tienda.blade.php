@@ -99,32 +99,35 @@
     <div class="container">
         <h1>Entradas</h1>
 
-        @foreach($eventos as $evento)
-        <div class="container" style="display: flex;">
-           
-            <div class="card">
-                <img src="{{ $evento->imagen }}" alt="{{ $evento->nombre }}">
-                <div class="card-content">
-                    <div class="card-title">{{ $evento->nombre_evento }}</div>
-                    <div class="card-price">{{ $evento->precio }}</div>
-                    <div class="card-date">Fecha y Hora: {{ $evento->fecha_hora }}</div>
-                    <div class="card-date">Fecha y Hora: {{ $evento->descripcion }}</div>
-                    <div class="card-capacity">Aforo: {{ $evento->aforo }}</div>
-                    <form action="{{ route('cestaEntrada', ['evento' => $evento->nombre_evento]) }}" method="POST">
-                        @csrf
-                        <button type="submit">Añadir a la cesta</button>
-                    </form>
-                </div>
-            </div>
-           
-        </div>
-        @endforeach
+        <div style="display: flex;">
 
-        @if(session('mensaje'))
-        <div id="mensaje" class="alert">
-            {{ session('mensaje') }}
+            @foreach($eventos as $evento)
+            <div class="container" style="display: flex;">
+
+                <div class="card">
+                    <img src="{{ $evento->imagen }}" alt="{{ $evento->nombre }}">
+                    <div class="card-content">
+                        <div class="card-title">{{ $evento->nombre_evento }}</div>
+                        <div class="card-price">Precio:{{ $evento->precio }}$</div>
+                        <div class="card-date">Fecha y Hora: {{ $evento->fecha_hora }}</div>
+                        <div class="card-date">Descripción: {{ $evento->descripcion }}</div>
+                        <div class="card-capacity">Aforo: {{ $evento->aforo }}</div>
+                        <form action="{{ route('cestaEntrada', ['evento' => $evento->nombre_evento]) }}" method="POST">
+                            @csrf
+                            <button type="submit">Añadir a la cesta</button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+            @endforeach
+
+            @if(session('mensaje'))
+            <div id="mensaje" class="alert">
+                {{ session('mensaje') }}
+            </div>
+            @endif
         </div>
-        @endif
 
 
 
