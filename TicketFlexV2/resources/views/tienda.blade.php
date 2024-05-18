@@ -137,13 +137,30 @@
     <div class="container">
         <h1>Merch</h1>
 
+        @foreach($articulos as $articulo)
+        <div class="container" style="display: flex;">
+           
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">{{ $articulo->nombre }}</div>
+                    <div class="card-price">{{ $articulo->precio }}</div>
+                    <div class="card-date">Descripcion: {{ $articulo->descripcion }}</div>
+                    <div class="card-capacity">Unidades: {{ $articulo->unidades }}</div>
+                    <form action="{{ route('cestaEntrada', ['evento' => $evento->nombre_evento]) }}" method="POST">
+                        @csrf
+                        <button type="submit">Añadir a la cesta</button>
+                    </form>
+                </div>
+            </div>
+           
+        </div>
+        @endforeach
 
-    </div>
-
-
-    <div class="container">
-        <h1>Merch</h1>
-
+        @if(session('mensaje'))
+        <div id="mensaje" class="alert">
+            {{ session('mensaje') }}
+        </div>
+        @endif
 
     </div>
 
