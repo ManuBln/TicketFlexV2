@@ -18,11 +18,13 @@ class TiendaController extends Controller
     {
         // dd(Evento::all());
         $eventos = Evento::all(); // Obtener todos los eventos
-        return view('tienda')->with(['eventos' => $eventos]); // Pasar la variable $eventos a la vista
+        $articulos = Articulo::all();
+        return view('tienda')->with(['eventos' => $eventos, 'articulos'=> $articulos]); // Pasar la variable $eventos a la vista
+        
     }
 
 
-    public function cestaEntrada(Request $request,String $nombre)
+    public function cestaEntrada(Request $request, String $nombre)
     {
         // Aquí podrías guardar la información de la compra en la base de datos o en la sesión   POR SI HACEMOS HISTORIAL DE COMPRA
         // Por ejemplo:
@@ -32,7 +34,7 @@ class TiendaController extends Controller
         // $compra->save();
 
 
-         //dd($nombre); // Mostrar el nombre del evento (para comprobar que funciona)
+        //dd($nombre); // Mostrar el nombre del evento (para comprobar que funciona)
         $mensaje = "Entrada añadida a la cesta";
         $this->cestaEvento[] = $nombre; // Añadir el evento a la cesta
 
@@ -43,20 +45,13 @@ class TiendaController extends Controller
     }
 
 
-    public function cestaArticulo(){
-
+    public function cestaArticulo()
+    {
     }
 
 
-    
-    public function cestaDrop(){
-        
+
+    public function cestaDrop()
+    {
     }
-
-    
-
-
-
-
-   
 }
