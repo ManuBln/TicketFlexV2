@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('descripcion');
             $table->integer('precio');
             $table->integer('unidades');
-            $table->integer('hora_entrada');
-            $table->integer('hora_salida');
+            $table->dateTime('hora_entrada');
+            $table->dateTime('hora_salida');
             $table->timestamps();
         });
     }
