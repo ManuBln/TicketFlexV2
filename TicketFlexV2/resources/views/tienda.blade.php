@@ -132,37 +132,40 @@
 
 
     </div>
+    <div class="container" >
 
-
-    <div class="container">
         <h1>Merch</h1>
+        <div class="" style="display: flex;">
 
-        @foreach($articulos as $articulo)
-        <div class="container" style="display: flex;">
-           
-            <div class="card">
-                <div class="card-content">
-                    <div class="card-title">{{ $articulo->nombre }}</div>
-                    <div class="card-price">{{ $articulo->precio }}</div>
-                    <div class="card-date">Descripcion: {{ $articulo->descripcion }}</div>
-                    <div class="card-capacity">Unidades: {{ $articulo->unidades }}</div>
-                    <form action="{{ route('cestaEntrada', ['evento' => $evento->nombre_evento]) }}" method="POST">
-                        @csrf
-                        <button type="submit">Añadir a la cesta</button>
-                    </form>
+
+            @foreach($articulos as $articulo)
+            <div class="container" style="display: flex;">
+
+                <div class="card">
+                    <div class="card-content">
+                        <div class="card-title">{{ $articulo->nombre }}</div>
+                        <div class="card-price">{{ $articulo->precio }}</div>
+                        <div class="card-date">Descripcion: {{ $articulo->descripcion }}</div>
+                        <div class="card-capacity">Unidades: {{ $articulo->unidades }}</div>
+                        <form action="{{ route('cestaEntrada', ['evento' => $evento->nombre_evento]) }}" method="POST">
+                            @csrf
+                            <button type="submit">Añadir a la cesta</button>
+                        </form>
+                    </div>
                 </div>
+
             </div>
-           
-        </div>
-        @endforeach
+            @endforeach
 
-        @if(session('mensaje'))
-        <div id="mensaje" class="alert">
-            {{ session('mensaje') }}
-        </div>
-        @endif
+            @if(session('mensaje'))
+            <div id="mensaje" class="alert">
+                {{ session('mensaje') }}
+            </div>
+            @endif
 
+        </div>
     </div>
+
 
 </body>
 
