@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TiendaController;
 use Illuminate\Support\Facades\Route;
 use App\Mail\Notification;
 use App\Models\User;
@@ -20,6 +21,14 @@ use  Barryvdh\DomPDF\Facade\Pdf as PDF;
 Route::get('/', function () {
     return view('welcome');
 });
+// Route::get('/tienda', function () {
+//     return view('tienda');
+// });
+
+Route::get('/tienda', [TiendaController::class, 'eventos']);
+Route::post('/tienda/{evento}', [TiendaController::class, 'cestaEntrada'])->name('cestaEntrada');
+// Route::post('/tienda', [TiendaController::class, 'cestaArticulo'])->name('cestaArticulo');
+
 
 Route::get('/merch', function () {
     return view('merch');
