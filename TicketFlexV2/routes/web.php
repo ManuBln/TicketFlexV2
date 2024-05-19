@@ -27,8 +27,7 @@ Route::get('/', function () {
 
 Route::get('/tienda', [TiendaController::class, 'eventos']);
 Route::post('/tienda/{evento}', [TiendaController::class, 'cestaEntrada'])->name('cestaEntrada');
-// Route::post('/tienda', [TiendaController::class, 'cestaArticulo'])->name('cestaArticulo');
-
+Route::post('/tienda/{articulo}', [TiendaController::class, 'cestaArticulo'])->name('cestaArticulo');
 
 Route::get('/merch', function () {
     return view('merch');

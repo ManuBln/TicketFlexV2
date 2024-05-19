@@ -147,7 +147,7 @@
                         <div class="card-price">{{ $articulo->precio }}</div>
                         <div class="card-date">Descripcion: {{ $articulo->descripcion }}</div>
                         <div class="card-capacity">Unidades: {{ $articulo->unidades }}</div>
-                        <form action="{{ route('cestaEntrada', ['evento' => $evento->nombre_evento]) }}" method="POST">
+                        <form action="{{ route('cestaArticulo', ['articulo' => $articulo->nombre]) }}" method="POST">
                             @csrf
                             <button type="submit">Añadir a la cesta</button>
                         </form>
@@ -156,10 +156,10 @@
 
             </div>
             @endforeach
-
-            @if(session('mensaje'))
+            
+            @if(session('mensajeArticulo'))
             <div id="mensaje" class="alert">
-                {{ session('mensaje') }}
+                {{ session('mensajeArticulo') }}
             </div>
             @endif
 
