@@ -34,7 +34,7 @@ class TiendaController extends Controller
         // $compra->save();
 
 
-        //dd($nombre); // Mostrar el nombre del evento (para comprobar que funciona)
+        dd($nombre); // Mostrar el nombre del evento (para comprobar que funciona)
         $mensaje = "Entrada añadida a la cesta";
         $this->cestaEvento[] = $nombre; // Añadir el evento a la cesta
 
