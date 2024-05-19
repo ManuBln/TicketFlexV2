@@ -14,14 +14,23 @@ class TiendaController extends Controller
     public $cestaArticulo = [];
     public $cestaDrop = [];
 
-    public function eventos()
+    public function eventos(Request $request)
     {
-        // dd(Evento::all());
+        // $request->session()->forget(['cestaEvento', 'cestaArticulo']);
+
         $eventos = Evento::all(); // Obtener todos los eventos
         $articulos = Articulo::all();
-        return view('tienda')->with(['eventos' => $eventos, 'articulos'=> $articulos]); // Pasar la variable $eventos a la vista
-        
-    }
+
+        $cestaEvento = $request->session()->get('cestaEvento', []);
+        $cestaArticulo = $request->session()->get('cestaArticulo', []);
+
+        return view('tienda')->with([
+            'eventos' => $eventos,
+            'articulos' => $articulos,
+            'cestaEvento' => $cestaEvento,
+            'cestaArticulo' => $cestaArticulo
+        ]); // Pasar las variables a la vista
+    }   
 
 
     public function cestaEntrada(Request $request, String $nombre)
@@ -39,6 +48,7 @@ class TiendaController extends Controller
         $request->session()->flash('mensaje', $mensaje); // Guardar un mensaje en la sesión
         return redirect()->back(); // Redirigir a la página anterior con un mensaje
     }
+
 
 
 
