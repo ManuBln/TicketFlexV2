@@ -68,8 +68,6 @@
             background-color: #45a049;
         }
 
-
-
         .alert {
             position: fixed;
             top: 20px;
@@ -91,6 +89,24 @@
                 right: 20px;
                 /* Termina en la posición deseada */
             }
+        }
+
+        .cesta-container {
+            margin-top: 50px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .cesta-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cesta-item:last-child {
+            border-bottom: none;
         }
     </style>
 </head>
@@ -138,6 +154,30 @@
             @endforeach
         </div>
     </div>
+
+
+
+
+    <div class="container cesta-container">
+        <h2>Contenido de la Cesta de Eventos</h2>
+        @if(empty($cestaEvento))
+        <p>No hay eventos en la cesta.</p>
+        @else
+        @foreach($cestaEvento as $evento)
+        <div class="cesta-item">{{ $evento }}</div>
+        @endforeach
+        @endif
+
+        <h2>Contenido de la Cesta de Artículos</h2>
+        @if(empty($cestaArticulo))
+        <p>No hay artículos en la cesta.</p>
+        @else
+        @foreach($cestaArticulo as $articulo)
+        <div class="cesta-item">{{ $articulo }}</div>
+        @endforeach
+        @endif
+    </div>
+
 
     @if(session('mensaje'))
     <div id="mensaje" class="alert">
