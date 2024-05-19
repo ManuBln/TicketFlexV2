@@ -24,10 +24,9 @@ Route::get('/', function () {
 // Route::get('/tienda', function () {
 //     return view('tienda');
 // });
-
 Route::get('/tienda', [TiendaController::class, 'eventos']);
-Route::post('/tienda/{evento}', [TiendaController::class, 'cestaEntrada'])->name('cestaEntrada');
-Route::post('/tienda/{articulo}', [TiendaController::class, 'cestaArticulo'])->name('cestaArticulo');
+Route::post('/tienda/entrada/{nombre}', [TiendaController::class, 'cestaEntrada'])->name('cestaEntrada');
+Route::post('/tienda/articulo/{nombre}', [TiendaController::class, 'cestaArticulo'])->name('cestaArticulo');
 
 Route::get('/merch', function () {
     return view('merch');

@@ -100,81 +100,60 @@
         <h1>Entradas</h1>
 
         <div style="display: flex;">
-
             @foreach($eventos as $evento)
-            <div class="container" style="display: flex;">
-
-                <div class="card">
-                    <img src="{{ $evento->imagen }}" alt="{{ $evento->nombre }}">
-                    <div class="card-content">
-                        <div class="card-title">{{ $evento->nombre_evento }}</div>
-                        <div class="card-price">Precio:{{ $evento->precio }}$</div>
-                        <div class="card-date">Fecha y Hora: {{ $evento->fecha_hora }}</div>
-                        <div class="card-date">Descripción: {{ $evento->descripcion }}</div>
-                        <div class="card-capacity">Aforo: {{ $evento->aforo }}</div>
-                        <form action="{{ route('cestaEntrada', ['evento' => $evento->nombre_evento]) }}" method="POST">
-                            @csrf
-                            <button type="submit">Añadir a la cesta</button>
-                        </form>
-                    </div>
+            <div class="card">
+                <img src="{{ $evento->imagen }}" alt="{{ $evento->nombre }}">
+                <div class="card-content">
+                    <div class="card-title">{{ $evento->nombre_evento }}</div>
+                    <div class="card-price">Precio:{{ $evento->precio }}$</div>
+                    <div class="card-date">Fecha y Hora: {{ $evento->fecha_hora }}</div>
+                    <div class="card-date">Descripción: {{ $evento->descripcion }}</div>
+                    <div class="card-capacity">Aforo: {{ $evento->aforo }}</div>
+                    <form action="{{ route('cestaEntrada', ['nombre' => $evento->nombre_evento]) }}" method="POST">
+                        @csrf
+                        <button type="submit">Añadir a la cesta</button>
+                    </form>
                 </div>
-
             </div>
             @endforeach
-
-            @if(session('mensaje'))
-            <div id="mensaje" class="alert">
-                {{ session('mensaje') }}
-            </div>
-            @endif
         </div>
-
-
-
     </div>
-    <div class="container" >
 
+    <div class="container">
         <h1>Merch</h1>
-        <div class="" style="display: flex;">
-
-
+        <div style="display: flex;">
             @foreach($articulos as $articulo)
-            <div class="container" style="display: flex;">
-
-                <div class="card">
-                    <div class="card-content">
-                        <div class="card-title">{{ $articulo->nombre }}</div>
-                        <div class="card-price">{{ $articulo->precio }}</div>
-                        <div class="card-date">Descripcion: {{ $articulo->descripcion }}</div>
-                        <div class="card-capacity">Unidades: {{ $articulo->unidades }}</div>
-                        <form action="{{ route('cestaArticulo', ['articulo' => $articulo->nombre]) }}" method="POST">
-                            @csrf
-                            <button type="submit">Añadir a la cesta</button>
-                        </form>
-                    </div>
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title">{{ $articulo->nombre }}</div>
+                    <div class="card-price">{{ $articulo->precio }}</div>
+                    <div class="card-date">Descripción: {{ $articulo->descripcion }}</div>
+                    <div class="card-capacity">Unidades: {{ $articulo->unidades }}</div>
+                    <form action="{{ route('cestaArticulo', ['nombre' => $articulo->nombre]) }}" method="POST">
+                        @csrf
+                        <button type="submit">Añadir a la cesta</button>
+                    </form>
                 </div>
-
             </div>
             @endforeach
-            
-            @if(session('mensajeArticulo'))
-            <div id="mensaje" class="alert">
-                {{ session('mensajeArticulo') }}
-            </div>
-            @endif
-
         </div>
     </div>
 
+    @if(session('mensaje'))
+    <div id="mensaje" class="alert">
+        {{ session('mensaje') }}
+    </div>
+    @endif
 
+    <script>
+        // Esperar 3 segundos y luego ocultar el mensaje
+        setTimeout(function() {
+            var mensaje = document.getElementById('mensaje');
+            if (mensaje) {
+                mensaje.style.display = 'none';
+            }
+        }, 3000);
+    </script>
 </body>
-
-<script>
-    // Esperar 2 segundos y luego ocultar el mensaje
-    setTimeout(function() {
-        var mensaje = document.getElementById('mensaje');
-        mensaje.style.display = 'none';
-    }, 3000);
-</script>
 
 </html>
