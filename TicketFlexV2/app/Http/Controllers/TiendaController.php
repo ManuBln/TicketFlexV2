@@ -49,8 +49,7 @@ class TiendaController extends Controller
         return redirect()->back(); // Redirigir a la página anterior con un mensaje
     }
 
-
-
+  
 
     public function cestaDrop()
     {

@@ -28,6 +28,17 @@ Route::get('/tienda', [TiendaController::class, 'eventos']);
 Route::post('/tienda/entrada/{nombre}', [TiendaController::class, 'cestaEntrada'])->name('cestaEntrada');
 Route::post('/tienda/articulo/{nombre}', [TiendaController::class, 'cestaArticulo'])->name('cestaArticulo');
 
+
+Route::get('/pago', function () {
+    return view('pago');
+})->name('pago');
+
+Route::post('/procesar-pago', function () {
+    // Aquí procesas el pago
+    return 'Pago procesado';
+})->name('procesar-pago');
+
+
 Route::get('/merch', function () {
     return view('merch');
 });

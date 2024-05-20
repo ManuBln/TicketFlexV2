@@ -176,6 +176,25 @@
         <div class="cesta-item">{{ $articulo }}</div>
         @endforeach
         @endif
+
+       @if(!empty($cestaEvento) || !empty($cestaArticulo))
+        <form action="{{ route('pago') }}" method="get">
+            @csrf
+            <button type="submit">Pagar</button>
+        </form>
+        @elseif(empty($cestaEvento) && empty($cestaArticulo))
+        <p></p>
+        @elseif(empty($cestaEvento) && !empty($cestaArticulo))
+        <form action="{{ route('pago') }}" method="get">
+            @csrf
+            <button type="submit">Pagar</button>
+        </form>
+        @elseif(!empty($cestaEvento) && empty($cestaArticulo))
+        <form action="{{ route('pago') }}" method="get">
+            @csrf
+            <button type="submit">Pagar</button>
+        </form>
+        @endif
     </div>
 
 
