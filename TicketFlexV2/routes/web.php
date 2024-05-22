@@ -21,9 +21,12 @@ use  Barryvdh\DomPDF\Facade\Pdf as PDF;
 Route::get('/', function () {
     return view('welcome');
 });
-// Route::get('/tienda', function () {
-//     return view('tienda');
-// });
+Route::get('/portero', function () {
+    return view('portero');
+});
+ Route::get('/shop', function () {
+     return view('shop');
+ });
 Route::get('/tienda', [TiendaController::class, 'eventos']);
 Route::post('/tienda/entrada/{nombre}', [TiendaController::class, 'cestaEntrada'])->name('cestaEntrada');
 Route::post('/tienda/articulo/{nombre}', [TiendaController::class, 'cestaArticulo'])->name('cestaArticulo');
@@ -36,9 +39,7 @@ Route::get('/drops', function () {
     return view('drops');
 });
 
-Route::get('/shop', function () {
-    return view('shop');
-});
+
 
 Auth::routes();
 
@@ -76,3 +77,10 @@ Route::get('/pdf', function () {
     return $pdf->download('archivo.pdf'); // Descargar el archivo PDF
 
 });
+
+
+
+
+
+
+
