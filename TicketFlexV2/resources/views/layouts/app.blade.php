@@ -16,6 +16,12 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <style>
+
+          .titulo {
+    width: 40%;
+    margin: auto;
+    display: flex;
+}
          .bordes {
     position: relative;
 }
@@ -44,6 +50,7 @@
 </head>
 <body class="bg-black">
     <div id="app">
+    <img class="titulo" src="{{ asset('images/logo.png') }}" alt="logo2">
     <nav class="navbar navbar-expand-lg navbar-dark  p-5">
             <div class="container">
                 <a class="navbar-brand bordes" href="{{route('home')}}" target="_self">Home</a>
@@ -59,13 +66,7 @@
                             <a class="nav-link bordes" href="#About" >About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link bordes" href="/shop" >Entradas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link bordes" href="">Merch</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link bordes" href="">Drops</a>
+                            <a class="nav-link bordes" href="/shop" >Shop</a>
                         </li>
                     </ul>
 
@@ -104,6 +105,7 @@
                             </li>
                         @endguest
                     </ul>
+                    
                 </div>
             </div>
         </nav>

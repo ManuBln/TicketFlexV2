@@ -1,188 +1,267 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Compra de Entradas</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <style>
-    html{
-  background: rgb(3,0,46);
-  background: radial-gradient(circle, rgba(3,0,46,1) 0%, rgba(2,2,88,1) 62%, rgba(0,141,170,1) 100%);
-}
-.carousel {
-  display: flex;
-  margin-bottom: 20px;
-}
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+  <head>
+  <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>TicketFlex</title>
+        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+        <style>
+                  .card-section{
+                    display: flex;
+                    flex-direction: column;
+                    flex-wrap: nowrap;
+                    justify-content: center;
+                    align-items: center;
+                    align-content: space-between;
+                  }
 
-.concert {
-  background-color: white;
-  margin-top: 8%;
-  margin-left: 2.5%;
-  flex: 0 0 auto;
-  margin-right: 20px;
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 10px;
-  text-align: center;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.9);
-  transition: transform 0.3s ease;
-  width: 380px;
-}
+                .card {
+                    position: relative;
+                    width: 60%;
+                    height: 0px;
+                    background-size: cover;
+                    background-position: center;
+                    border-radius: 20px 20px 20px;
+                    overflow: hidden;
+                    margin-bottom: 10px;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                    display: flex;
+                    align-items: flex-end;
+                    transition: transform 0.3s, box-shadow 0.3s;
+                  }
 
-.concert img {
-  width: 100%;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
+                .card:hover {
+                    transform: translateY(-10px);
+                    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+                }
 
-.concert h3 {
-  margin: 0;
-  font-size: 18px;
-}
+                /* Estilos para el contenido de la carta */
+                .card-content {
+                    background: rgba(0, 0, 0, 0.6);
+                    color: #fff;
+                    width: 100%;
+                    padding: 20px;
+                    border-radius: 0 0 15px 15px;
+                    box-sizing: border-box;
+                }
 
-.concert p {
-  margin: 5px 0;
-  color: rgb(102, 102, 102);
-}
+                .card-title {
+                    font-size: 24px;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                }
 
-.concert button {
-  background-color: rgb(0, 123, 255);
-  color: rgb(255, 255, 255);
-  border: none;
-  border-radius: 3px;
-  padding: 5px 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
+                .card-details {
+                    font-size: 16px;
+                    margin-bottom: 5px;
+                }
 
-.concert button:hover {
-  background-color: rgb(0, 86, 179);
-}
+                .card-price {
+                    font-size: 20px;
+                    font-weight: bold;
+                    margin: 10px 0;
+                }
 
-h2 {
-  margin-left: 45%;
-  color: white;
-  position: absolute;
-}
+                .buy-button {
+                    display: inline-block;
+                    background: #6f4a95;
+                    color: #fff;
+                    padding: 10px 20px;
+                    text-align: center;
+                    border-radius: 5px;
+                    text-decoration: none;
+                    font-size: 16px;
+                    transition: background 0.3s;
+                }
 
-.cart {
-  position: fixed;
-  top: 0px;
-  right: 137px;
-  background-color: rgb(252, 92, 12);
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  width: 45px;
-  height: 41px;
-}
+                .buy-button:hover {
+                    background: #e64a19;
+                }
+                    
+                #drops-section {
+                    padding: 20px;
+                    position: relative;
+                    text-align: center;
+                }
 
-.cart-icon {
-  font-size: 25px;
-  margin-right: 3px;
-  color: white;
-}
+                .section-title {
+                    text-align: center;
+                    font-size: 2rem;
+                    color: #fff;
+                }
 
-.cart-counter {
-  border-radius: 50%;
-  padding: 5px 8px;
-  font-size: 16px;
-  margin-left: 30px;
-  margin-top: 20px;
-  color: white;
-  position: absolute;
-}
+                .section-description {
+                    font-size: 1.2rem;
+                    text-align: left;
+                    max-width: 800px;
+                    margin: 20px auto;
+                    color: white;
+                }
 
-.pay-button {
-  margin-left: 10px;
-  padding: 8px 16px;
-  background-color: transparent;
-  color: white;
-  border: 1px solid white;
-  border-radius: 5px;
-  cursor: pointer;
-  width: 100px;
-  transition: 0.5s;
-}
+                .drops-container {
+                    display: flex;
+                    justify-content: space-around;
+                    flex-wrap: wrap;
+                    gap: 20px;
+                }
 
-.added-to-cart {
-  display: none;
-  position: absolute;
-  top: 0px;
-  right: -138px;
-  background-color: rgb(76, 175, 80);
-  color: white;
-  padding: 5px 10px;
-  font-size: 16px;
-}
+                .drop {
+                    background: linear-gradient(145deg, #1e1e1e, #121212);
+                    border-radius: 15px;
+                    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+                    overflow: hidden;
+                    position: relative;
+                    width: 45%;
+                    max-width: 500px;
+                    transition: transform 0.3s ease;
+                }
 
-.pay-button:hover {
-  background-color: rgb(55, 129, 58);
-}
-  </style>
-</head>
-<body>
+                .drop:hover {
+                    transform: scale(1.05);
+                }
 
-<div class="ticket-booking">
-  <h2>Compra de Entradas</h2>
-  <div class="carousel">
-    <div class="concert">
-      <img src="https://images.pexels.com/photos/435840/pexels-photo-435840.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Concert Image">
-      <h3>Concierto 1</h3>
-      <p>10 de junio de 2024</p>
-      <p>Lugar 1</p>
-      <button class="add-to-cart">Comprar Entrada</button>
+                .drop-content {
+                    padding: 20px;
+                    text-align: center;
+                }
+
+                .drop h2 {
+                    font-size: 1.8rem;
+                    color: #fff;
+                }
+
+                .drop p {
+                    font-size: 1.2rem;
+                    margin: 20px 0;
+                    color: #fff;
+                }
+                .drop-image {
+                    width: 100%;
+                    height: 200px;
+                    background-size: cover;
+                    background-position: center;
+                    filter: blur(8px);
+                    transition: filter 0.3s;
+                }
+
+                .drop h2 {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    margin: 0;
+                    background-color: rgba(0, 0, 0, 0.5);
+                    padding: 10px;
+                    border-radius: 8px;
+                    transition: opacity 0.3s;
+                }
+
+                .drop-description {
+                    display: none;
+                }
+
+                .drop.active .drop-image {
+                    filter: none;
+                }
+
+                .drop.active h2 {
+                    opacity: 0;
+                }
+
+                .drop.active .drop-description,
+                .drop.active .buy-button {
+                    display: block;
+                }
+
+    </style>
+  </head>
+  <body>
+  @extends('layouts.app')
+
+@section('content')
+<main>
+  <section>
+    <div class="card-section">
+        <div class="card" style="background-image: url('{{ asset('images/entrada1.jpg') }}');">
+            <div class="card-content">
+                <h2 class="card-title">Título del Grupo 1</h2>
+                <p class="card-details">Ubicación: Lugar 1</p>
+                <p class="card-details">Fecha y Hora: 20/05/2024, 20:00</p>
+                <p class="card-price">Precio: $50</p>
+                <a href="#" class="buy-button">Comprar</a>
+            </div>
+        </div>
+        <div class="card" style="background-image: url('images/entrada2.jpg');">
+            <div class="card-content">
+                <h2 class="card-title">Título del Grupo 2</h2>
+                <p class="card-details">Ubicación: Lugar 2</p>
+                <p class="card-details">Fecha y Hora: 21/05/2024, 21:00</p>
+                <p class="card-price">Precio: $60</p>
+                <a href="#" class="buy-button">Comprar</a>
+            </div>
+        </div>
+        <div class="card" style="background-image: url('images/entrada3.webp');">
+            <div class="card-content">
+                <h2 class="card-title">Título del Grupo 2</h2>
+                <p class="card-details">Ubicación: Lugar 2</p>
+                <p class="card-details">Fecha y Hora: 21/05/2024, 21:00</p>
+                <p class="card-price">Precio: $60</p>
+                <a href="#" class="buy-button">Comprar</a>
+            </div>
+        </div>
+        <div class="card" style="background-image: url('https://i.ytimg.com/vi/sEKfc3VjJlQ/maxresdefault.jpg');">
+            <div class="card-content">
+                <h2 class="card-title">Título del Grupo 2</h2>
+                <p class="card-details">Ubicación: Lugar 2</p>
+                <p class="card-details">Fecha y Hora: 21/05/2024, 21:00</p>
+                <p class="card-price">Precio: $60</p>
+                <a href="#" class="buy-button">Comprar</a>
+            </div>
+        </div>
+        <!-- Añade más cartas aquí según sea necesario -->
     </div>
-    <div class="concert">
-      <img src="https://images.pexels.com/photos/7715613/pexels-photo-7715613.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Concert Image">
-      <h3>Concierto 2</h3>
-      <p>15 de junio de 2024</p>
-      <p>Lugar 2</p>
-      <button class="add-to-cart">Comprar Entrada</button>
-    </div>
-    <div class="concert">
-      <img src="https://images.pexels.com/photos/4039987/pexels-photo-4039987.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Concert Image">
-      <h3>Concierto 3</h3>
-      <p>20 de junio de 2024</p>
-      <p>Lugar 3</p>
-      <button class="add-to-cart">Comprar Entrada</button>
-    </div>
-    <div class="concert">
-      <img src="https://images.pexels.com/photos/11963135/pexels-photo-11963135.png?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Concert Image">
-      <h3>Concierto 4</h3>
-      <p>25 de junio de 2024</p>
-      <p>Lugar 4</p>
-      <button class="add-to-cart">Comprar Entrada</button>
-    </div>
-  </div>
-</div>
-<div class="cart" id="cart">
-  <i class="fas fa-shopping-cart cart-icon"></i>
-  <span class="cart-counter" id="cart-counter">0</span>
-  <div class="added-to-cart" id="added-to-cart">
-    Añadido a la cesta
-    <button class="pay-button" id="pay-button">Pagar</button>
-  </div>
-</div>
-
-
+</section>
+    <section id="drops-section">
+        <h1 class="section-title">Drops Limitados</h1>
+        <p class="section-description">Los drops limitados de TicketFlex ofrecen oportunidades para que los usuarios adquieran compras limitadas en cantidad y tiempo. ¡No te pierdas estas ofertas exclusivas!</p>
+        <div class="drops-container">
+            <div class="drop" id="drop1">
+                <div class="drop-content">
+                    <div class="drop-image" style="background-image: url('https://www.zentralpamplona.com/sites/default/files/styles/cabecera_webp/public/2023-09/JARFAITERWEB.jpg.webp?itok=3EnkgfhT');"></div>
+                    <h2>Un cabezazo de Jarfaiter</h2>
+                    <p class="drop-description">Participa en el sorteo de un cabezazo propinado por el rapero a gusto del consumidor</p>
+                    <button class="buy-button">Participa</button>
+                </div>
+            </div>
+            <div class="drop" id="drop2">
+                <div class="drop-content">
+                    <div class="drop-image" style="background-image: url('https://pbs.twimg.com/profile_images/1393555179975413762/yiF-7aRP_400x400.jpg');"></div>
+                    <h2>Barbacoa con el Panterilla</h2>
+                    <p class="drop-description">Un día en exclusiva acompañado del integrante de Guadalupe Plata al calor de las brasas, choricillos no incluidos</p>
+                    <button class="buy-button">Participa</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+    
 <script>
-  function addToCart(event) {
-    const cartCounter = document.getElementById('cart-counter');
-    cartCounter.textContent = parseInt(cartCounter.textContent) + 1;
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.buy-button');
 
-    const addedToCart = document.getElementById('added-to-cart');
-    addedToCart.style.display = 'block';
+});
 
-    const payButton = document.getElementById('pay-button');
-    payButton.style.display = 'block';
-  }
-  const addToCartButtons = document.querySelectorAll('.add-to-cart');
-    addToCartButtons.forEach(button => {
-    button.addEventListener('click', addToCart);
-  });
+document.addEventListener('DOMContentLoaded', () => {
+    const drops = document.querySelectorAll('.drop');
+
+    drops.forEach(drop => {
+        drop.addEventListener('click', () => {
+            drop.classList.toggle('active');
+        });
+    });
+});
 </script>
-
-</body>
+@endsection
+  </body>
 </html>
