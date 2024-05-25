@@ -80,46 +80,76 @@
 </head>
 
 
-
 <body>
-    <div class="payment-form">
-        <h2>Formulario de Pago</h2>
-        <form action="{{ route('procesar-pago') }}" method="POST">
-            @csrf
-            <!-- Nombre del Titular de la Tarjeta -->
+<div class="payment-form">
+    <h2>Formulario de Pago</h2>
+    <h2>Contenido de la Cesta</h2>
+    @if(!empty($cestaEvento))
+        <h3>Entradas</h3>
+        @foreach($cestaEvento as $evento)
+            <p>{{ $evento }}</p>
+        @endforeach
+    @endif
+
+    @if(!empty($cestaArticulo))
+        <h3>Artículos</h3>
+        @foreach($cestaArticulo as $articulo)
+            <p>{{ $articulo }}</p>
+        @endforeach
+    @endif
+    <form action="{{ route('procesar-pago') }}" method="POST">
+        @csrf
+        <!--Nombre que se mostrará en la entrada-->
+        <div class="form-group">
+            <label for="name">Nombre y apellidos</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+
+        <!-- Dirección de correo electrónico -->
+        <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+
+        <!-- Dirección de Entrega -->
+        <div class="form-group">
+            <label for="shipping_address">Dirección de Entrega</label>
+            <input type="text" id="shipping_address" name="shipping_address" required>
+        </div>
+        <!-- Nombre del Titular de la Tarjeta -->
+        <div class="form-group">
+            <label for="cardholder-name">Nombre del Titular de la Tarjeta</label>
+            <input type="text" id="cardholder-name" name="cardholder_name" required>
+        </div>
+
+        <!-- Número de la Tarjeta -->
+        <div class="form-group">
+            <label for="card-number">Número de la Tarjeta</label>
+            <input type="text" id="card-number" name="card_number" required>
+        </div>
+
+        <!-- Fecha de Expiración y CVV -->
+        <div class="form-group-inline">
             <div class="form-group">
-                <label for="cardholder-name">Nombre del Titular de la Tarjeta</label>
-                <input type="text" id="cardholder-name" name="cardholder_name" required>
+                <label for="expiry-date">Fecha de Expiración</label>
+                <input type="text" id="expiry-date" name="expiry_date" placeholder="MM/AA" required>
             </div>
-
-            <!-- Número de la Tarjeta -->
             <div class="form-group">
-                <label for="card-number">Número de la Tarjeta</label>
-                <input type="text" id="card-number" name="card_number" required>
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" required>
             </div>
+        </div>
 
-            <!-- Fecha de Expiración y CVV -->
-            <div class="form-group-inline">
-                <div class="form-group">
-                    <label for="expiry-date">Fecha de Expiración</label>
-                    <input type="text" id="expiry-date" name="expiry_date" placeholder="MM/AA" required>
-                </div>
-                <div class="form-group">
-                    <label for="cvv">CVV</label>
-                    <input type="text" id="cvv" name="cvv" required>
-                </div>
-            </div>
+        <!-- Dirección de Facturación -->
+        <div class="form-group">
+            <label for="billing-address">Dirección de Facturación</label>
+            <input type="text" id="billing-address" name="billing_address" required>
+        </div>
 
-            <!-- Dirección de Facturación -->
-            <div class="form-group">
-                <label for="billing-address">Dirección de Facturación</label>
-                <input type="text" id="billing-address" name="billing_address" required>
-            </div>
-
-            <!-- Botón de Envío -->
-            <button type="submit">Pagar</button>
-        </form>
-    </div>
+        <!-- Botón de Envío -->
+        <button type="submit">Pagar</button>
+    </form>
+</div>
 </body>
 
 </html>
