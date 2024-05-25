@@ -66,13 +66,7 @@
                             <a class="nav-link bordes" href="#About" >About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link bordes" href="/shop" >Entradas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link bordes" href="/merch">Merch</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link bordes" href="/drops">Drops</a>
+                            <a class="nav-link bordes" href="/shop" >Shop</a>
                         </li>
                     </ul>
 
