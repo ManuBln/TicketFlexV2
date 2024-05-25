@@ -46,7 +46,7 @@
     <body class="bg-black text-white">
     <header class="text-white">
         <div class="container-fluid col-12">
-            <img class="titulo" src="https://preview.fontget.com/tmp/6640e331291e2.png" alt="logo2">
+        <img class="titulo" src="{{ asset('images/logo.png') }}" alt="logo2">
             <!--<h1 class="pt-2 text-white text-center w-100 col-12">Guadalupe Plata</h1>-->
         </div>
         <nav class="navbar navbar-expand-lg navbar-dark  p-5">
@@ -62,13 +62,7 @@
                             <a class="nav-link bordes" href="#About" >About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link bordes" href="/shop" >Entradas</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link bordes" href="">Merch</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link bordes" href="">Drops</a>
+                            <a class="nav-link bordes" href="/shop" >Shop</a>
                         </li>
                         @if (Route::has('login'))
                                 @auth
@@ -150,12 +144,12 @@
                         <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
                             <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
                         </a>
-                            <span class="mb-3 mb-md-0 text-muted">© 2022 Company, Inc</span>
+                            <span class="mb-3 mb-md-0 text-white">© 2022 Company, Inc</span>
                     </div>
                     <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-                        <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
-                        <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
-                        <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+                        <li class="ms-3"><a class="text-white" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
+                        <li class="ms-3"><a class="text-white" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
+                        <li class="ms-3"><a class="text-white" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
                     </ul>
             </footer>
         </main>
