@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\TiendaController;
+use App\Http\Controllers\PagoController;
 use Illuminate\Support\Facades\Route;
 use App\Mail\Notification;
 use App\Models\User;
@@ -17,9 +19,35 @@ use  Barryvdh\DomPDF\Facade\Pdf as PDF;
 |
 */
 
+
+Route::post('/procesar-pago', [PagoController::class, 'procesarPago'])->name('procesar-pago');
+Route::get('/confirmado', [PagoController::class, 'confirmado'])->name('confirmado');
+
+/*
+ * Route::post('/procesar-pago', function () {
+    // Aquí procesas el pago
+    return 'Pago procesado';
+})->name('procesar-pago');*/
+/*------------------------------------------------------*/
+
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/portero', function () {
+    return view('portero');
+});
+Route::get('/shop', function () {
+    return view('shop');
+});
+Route::get('/tienda', [TiendaController::class, 'eventos']);
+Route::post('/tienda/entrada/{nombre}', [TiendaController::class, 'cestaEntrada'])->name('cestaEntrada');
+Route::post('/tienda/articulo/{nombre}', [TiendaController::class, 'cestaArticulo'])->name('cestaArticulo');
+
+
+Route::get('/pago', function () {
+    return view('pago');
+})->name('pago');
+
 
 Route::get('/merch', function () {
     return view('merch');
@@ -29,9 +57,6 @@ Route::get('/drops', function () {
     return view('drops');
 });
 
-Route::get('/shop', function () {
-    return view('shop');
-});
 
 Auth::routes();
 
@@ -47,7 +72,6 @@ Route::get('/home', function () {
 
 Route::get('/email', function () {
     $user = Auth::user(); // Obtener el usuario autenticado
-
 
 
     if (!$user) {
@@ -69,3 +93,10 @@ Route::get('/pdf', function () {
     return $pdf->download('archivo.pdf'); // Descargar el archivo PDF
 
 });
+
+
+
+
+
+
+

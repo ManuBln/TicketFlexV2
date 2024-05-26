@@ -86,9 +86,7 @@
                 }
 
                 .section-title {
-                    position: absolute;
-                    top: 20px;
-                    right: 20px;
+                    text-align: center;
                     font-size: 2rem;
                     color: #fff;
                 }
@@ -98,6 +96,7 @@
                     text-align: left;
                     max-width: 800px;
                     margin: 20px auto;
+                    color: white;
                 }
 
                 .drops-container {
@@ -211,7 +210,7 @@
                 <a href="#" class="buy-button">Comprar</a>
             </div>
         </div>
-        <div class="card" style="background-image: url('images/entrada4.jpg');">
+        <div class="card" style="background-image: url('https://i.ytimg.com/vi/sEKfc3VjJlQ/maxresdefault.jpg');">
             <div class="card-content">
                 <h2 class="card-title">Título del Grupo 2</h2>
                 <p class="card-details">Ubicación: Lugar 2</p>
@@ -229,7 +228,7 @@
         <div class="drops-container">
             <div class="drop" id="drop1">
                 <div class="drop-content">
-                    <div class="drop-image" style="background-image: url('https://i.ytimg.com/vi/TiCTjXCprqE/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGGUgZShlMA8=&rs=AOn4CLDHOagHM7ee-weHfKv2FDpBurNNIg');"></div>
+                    <div class="drop-image" style="background-image: url('https://www.zentralpamplona.com/sites/default/files/styles/cabecera_webp/public/2023-09/JARFAITERWEB.jpg.webp?itok=3EnkgfhT');"></div>
                     <h2>Un cabezazo de Jarfaiter</h2>
                     <p class="drop-description">Participa en el sorteo de un cabezazo propinado por el rapero a gusto del consumidor</p>
                     <button class="buy-button">Participa</button>
