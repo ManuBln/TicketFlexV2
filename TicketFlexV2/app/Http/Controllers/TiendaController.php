@@ -24,13 +24,26 @@ class TiendaController extends Controller
         $cestaEvento = $request->session()->get('cestaEvento', []);
         $cestaArticulo = $request->session()->get('cestaArticulo', []);
 
+        // Obtener el último y el penúltimo artículo
+        $articuloActual = Articulo::orderBy('id', 'desc')->first();
+        $articuloAnterior = Articulo::where('id', '<', $articuloActual->id)->orderBy('id', 'desc')->first();
+
         return view('tienda')->with([
             'eventos' => $eventos,
             'articulos' => $articulos,
             'cestaEvento' => $cestaEvento,
-            'cestaArticulo' => $cestaArticulo
+            'cestaArticulo' => $cestaArticulo,
+            'articuloActual' => $articuloActual,
+            'articuloAnterior' => $articuloAnterior
         ]); // Pasar las variables a la vista
-    }   
+    }// Pasar las variables a la vista
+
+
+
+
+
+
+
 
 
     public function cestaEntrada(Request $request, String $nombre)
@@ -49,7 +62,7 @@ class TiendaController extends Controller
         return redirect()->back(); // Redirigir a la página anterior con un mensaje
     }
 
-  
+
 
     public function cestaDrop()
     {

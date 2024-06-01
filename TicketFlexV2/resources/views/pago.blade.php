@@ -79,7 +79,9 @@
     </style>
 </head>
 
+@extends('layouts.app')
 
+@section('content')
 <body>
 <div class="payment-form">
     <h2>Formulario de Pago</h2>
@@ -151,5 +153,5 @@
     </form>
 </div>
 </body>
-
+@endsection
 </html>

@@ -3,9 +3,12 @@
 <head>
     <title>Confirmación de Pago</title>
 </head>
+@extends('layouts.app')
+
+@section('content')
 <body>
 <h1>Confirmación de Pago</h1>
-
+{{ __('Bienvenido a TicketFlex, ') . Auth::user()->name . '!' }}
 @if(isset($data['entrada_seleccionada']))
     <h2>Entradas Seleccionadas:</h2>
     @foreach($data['entrada_seleccionada'] as $entrada)
@@ -29,4 +32,5 @@
 <p><strong>CVV:</strong> {{ $data['cvv'] }}</p>
 <p><strong>Dirección de Facturación:</strong> {{ $data['billing_address'] }}</p>
 </body>
+@endsection
 </html>
