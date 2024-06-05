@@ -30,16 +30,19 @@ class TiendaController extends Controller
             'cestaEvento' => $cestaEvento,
             'cestaArticulo' => $cestaArticulo
         ]); // Pasar las variables a la vista
-    }   
+    }
 
 
     public function cestaEntrada(Request $request, String $nombre)
     {
         $mensaje = "Entrada añadida a la cesta";
-        $request->session()->push('cestaEvento', $nombre); // Añadir el evento a la cesta en la sesión
+        $request->session()->push('cestaEvento', $nombre ); // Añadir el evento a la cesta en la sesión
         $request->session()->flash('mensaje', $mensaje); // Guardar un mensaje en la sesión
         return redirect()->back(); // Redirigir a la página anterior con un mensaje
     }
+
+
+
 
     public function cestaArticulo(Request $request, String $nombre)
     {
@@ -49,9 +52,7 @@ class TiendaController extends Controller
         return redirect()->back(); // Redirigir a la página anterior con un mensaje
     }
 
-  
 
-    public function cestaDrop()
-    {
-    }
+
+
 }

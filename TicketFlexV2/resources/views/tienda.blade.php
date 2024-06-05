@@ -161,7 +161,9 @@
         <p>No hay eventos en la cesta.</p>
     @else
         @foreach($cestaEvento as $evento)
-            <div class="cesta-item">{{ $evento }}</div>
+            <div class="cesta-item">
+                <p>{{ $evento }}</p>
+            </div>
         @endforeach
     @endif
 
