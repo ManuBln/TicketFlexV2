@@ -23,6 +23,9 @@ Route::get('/confirmado', [PagoController::class, 'confirmado'])->name('confirma
 
 Route::get('/articulo/{nombre}', [TiendaController::class, 'drops'])->name('articulo.drops');
 
+/*------------------------------------------------------*/
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -35,7 +38,9 @@ Route::get('/shop', function () {
     return view('shop');
 });
 
-Route::get('/tienda', [TiendaController::class, 'eventos']);
+
+
+Route::get('/tienda', [TiendaController::class, 'eventos'])->name('tienda');
 Route::post('/tienda/entrada/{nombre}', [TiendaController::class, 'cestaEntrada'])->name('cestaEntrada');
 Route::post('/tienda/articulo/{nombre}', [TiendaController::class, 'cestaArticulo'])->name('cestaArticulo');
 
@@ -82,3 +87,6 @@ Route::get('/pdf', function () {
 
     return $pdf->download('archivo.pdf'); // Descargar el archivo PDF
 });
+
+Route::post('/procesar-pago', [PagoController::class, 'procesarPago'])->name('procesar-pago');
+Route::get('/confirmado', [PagoController::class, 'confirmado'])->name('confirmado');

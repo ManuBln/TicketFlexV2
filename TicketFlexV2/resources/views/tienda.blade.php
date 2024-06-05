@@ -178,44 +178,42 @@
                 </div>
             @endif
 
-            {{-- Artículo Anterior --}}
-            @if ($articuloAnterior)
-                <div class="card">
-                    <img src="{{ $articuloAnterior->imagen_ruta }}" alt="{{ $articuloAnterior->nombre }}">
-                    <div class="card-content">
-                        <div class="card-title">{{ $articuloAnterior->nombre }}</div>
-                        <div class="card-price">{{ $articuloAnterior->precio }}</div>
-                        <div class="card-date">Descripción: {{ $articuloAnterior->descripcion }}</div>
-                        <div class="card-capacity">Unidades: {{ $articuloAnterior->unidades }}</div>
-                        <form action="{{ route('cestaArticulo', ['nombre' => $articuloAnterior->nombre]) }}"
-                              method="POST">
-                            @csrf
-                            <button type="submit">Añadir a la cesta</button>
-                        </form>
-                    </div>
+
+
+<div class="container cesta-container">
+    <h2>Contenido de la Cesta de Eventos</h2>
+    @if(empty($cestaEvento))
+        <p>No hay eventos en la cesta.</p>
+    @else
+        @foreach($cestaEvento as $evento)
+            @if(is_array($evento))
+                <div class="cesta-item">
+                    <img src="{{ $evento['imagen'] }}" alt="{{ $evento['nombre'] }}" style="width: 50px; height: auto;">
+                    <p>{{ $evento['nombre'] }} - Precio: {{ $evento['precio'] }}$</p>
                 </div>
+            @else
+                <p>{{ $evento }}</p>
             @endif
-        </div>
-    </div>
+        @endforeach
+    @endif
 
-    <div class="container cesta-container">
-        <h2>Contenido de la Cesta de Eventos</h2>
-        @if(empty($cestaEvento))
-            <p>No hay eventos en la cesta.</p>
-        @else
-            @foreach($cestaEvento as $evento)
-                <div class="cesta-item">{{ $evento }}</div>
-            @endforeach
-        @endif
 
-        <h2>Contenido de la Cesta de Artículos</h2>
-        @if(empty($cestaArticulo))
-            <p>No hay artículos en la cesta.</p>
-        @else
-            @foreach($cestaArticulo as $articulo)
-                <div class="cesta-item">{{ $articulo }}</div>
-            @endforeach
-        @endif
+    <h2>Contenido de la Cesta de Artículos</h2>
+    @if(empty($cestaArticulo))
+        <p>No hay artículos en la cesta.</p>
+    @else
+        @foreach($cestaArticulo as $articulo)
+            @if(is_array($articulo))
+                <div class="cesta-item">
+                    <img src="{{ $articulo['imagen'] }}" alt="{{ $articulo['nombre'] }}"
+                         style="width: 50px; height: auto;">
+                    <p>{{ $articulo['nombre'] }} - Precio: {{ $articulo['precio'] }}$</p>
+                </div>
+            @else
+                <p>{{ $articulo }}</p>
+            @endif
+        @endforeach
+    @endif
 
         @if(!empty($cestaEvento) || !empty($cestaArticulo))
             @if(Auth::user())
