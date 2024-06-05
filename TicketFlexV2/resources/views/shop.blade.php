@@ -186,36 +186,36 @@
         <div class="card" style="background-image: url('{{ asset('images/entrada1.jpg') }}');">
             <div class="card-content">
                 <h2 class="card-title">Red Hot Chili Peppers</h2>
-                <p class="card-details">Madrid</p>
-                <p class="card-details">Fecha y Hora: 24/06/2024, 20:00</p>
-                <p class="card-price">Precio: $50</p>
+                <p class="card-details">Madrid: Mad Cool Festival</p>
+                <p class="card-details">Fecha y Hora: 24/06/2024, 21:00</p>
+                <p class="card-price">Precio: 80€</p>
                 <a href="#" class="buy-button">Comprar</a>
             </div>
         </div>
         <div class="card" style="background-image: url('images/entrada2.jpg');">
             <div class="card-content">
-                <h2 class="card-title">Título del Grupo 2</h2>
-                <p class="card-details">Ubicación: Lugar 2</p>
-                <p class="card-details">Fecha y Hora: 21/05/2024, 21:00</p>
-                <p class="card-price">Precio: $60</p>
+                <h2 class="card-title">Los Chunguitos</h2>
+                <p class="card-details">Sevilla: Sala X</p>
+                <p class="card-details">Fecha y Hora: 21/06/2024, 16:00</p>
+                <p class="card-price">Precio: 15€</p>
                 <a href="#" class="buy-button">Comprar</a>
             </div>
         </div>
         <div class="card" style="background-image: url('images/entrada3.webp');">
             <div class="card-content">
-                <h2 class="card-title">Título del Grupo 2</h2>
-                <p class="card-details">Ubicación: Lugar 2</p>
-                <p class="card-details">Fecha y Hora: 21/05/2024, 21:00</p>
-                <p class="card-price">Precio: $60</p>
+                <h2 class="card-title">Jarfaiter</h2>
+                <p class="card-details">Granada: La Tren</p>
+                <p class="card-details">Fecha y Hora: 7/06/2024, 21:30</p>
+                <p class="card-price">Precio: 20€</p>
                 <a href="#" class="buy-button">Comprar</a>
             </div>
         </div>
         <div class="card" style="background-image: url('https://i.ytimg.com/vi/sEKfc3VjJlQ/maxresdefault.jpg');">
             <div class="card-content">
-                <h2 class="card-title">Título del Grupo 2</h2>
-                <p class="card-details">Ubicación: Lugar 2</p>
-                <p class="card-details">Fecha y Hora: 21/05/2024, 21:00</p>
-                <p class="card-price">Precio: $60</p>
+                <h2 class="card-title">Twenty One Pilots</h2>
+                <p class="card-details">Barcelona: Primavera Sound</p>
+                <p class="card-details">Fecha y Hora: 8/07/2024, 23:00</p>
+                <p class="card-price">Precio: 40€</p>
                 <a href="#" class="buy-button">Comprar</a>
             </div>
         </div>

@@ -48,7 +48,7 @@
 }
     </style>
 </head>
-<body class="bg-black">
+<body class="bg-white">
     <div id="app">
     <img class="titulo" src="{{ asset('images/logo.png') }}" alt="logo2">
     <nav class="navbar navbar-expand-lg navbar-dark  p-5">
