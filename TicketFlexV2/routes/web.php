@@ -20,22 +20,17 @@ use  Barryvdh\DomPDF\Facade\Pdf as PDF;
 */
 
 
-Route::post('/procesar-pago', [PagoController::class, 'procesarPago'])->name('procesar-pago');
-Route::get('/confirmado', [PagoController::class, 'confirmado'])->name('confirmado');
-
-/*
- * Route::post('/procesar-pago', function () {
-    // Aquí procesas el pago
-    return 'Pago procesado';
-})->name('procesar-pago');*/
 /*------------------------------------------------------*/
+
 
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/portero', function () {
     return view('portero');
 });
+
 Route::get('/shop', function () {
     return view('shop');
 });
@@ -44,11 +39,9 @@ Route::get('/tienda', [TiendaController::class, 'eventos'])->name('tienda');
 Route::post('/tienda/entrada/{nombre}', [TiendaController::class, 'cestaEntrada'])->name('cestaEntrada');
 Route::post('/tienda/articulo/{nombre}', [TiendaController::class, 'cestaArticulo'])->name('cestaArticulo');
 
-
 Route::get('/pago', function () {
     return view('pago');
 })->name('pago');
-
 
 Route::get('/merch', function () {
     return view('merch');
@@ -58,10 +51,8 @@ Route::get('/drops', function () {
     return view('drops');
 });
 
-
 Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', function () {
     if (Auth::check()) {
         return view('home');
@@ -70,10 +61,8 @@ Route::get('/home', function () {
     }
 })->name('home');
 
-
 Route::get('/email', function () {
     $user = Auth::user(); // Obtener el usuario autenticado
-
 
     if (!$user) {
         return view('welcome');
@@ -92,8 +81,10 @@ Route::get('/pdf', function () {
     $pdf = PDF::loadView('pdfPlantilla', $data); // Generar PDF con la información del usuario
 
     return $pdf->download('archivo.pdf'); // Descargar el archivo PDF
-
 });
+
+Route::post('/procesar-pago', [PagoController::class, 'procesarPago'])->name('procesar-pago');
+Route::get('/confirmado', [PagoController::class, 'confirmado'])->name('confirmado');
 
 
 

@@ -154,16 +154,20 @@
     </div>
 </div>
 
-
 <div class="container cesta-container">
     <h2>Contenido de la Cesta de Eventos</h2>
     @if(empty($cestaEvento))
         <p>No hay eventos en la cesta.</p>
     @else
         @foreach($cestaEvento as $evento)
-            <div class="cesta-item">
+            @if(is_array($evento))
+                <div class="cesta-item">
+                    <img src="{{ $evento['imagen'] }}" alt="{{ $evento['nombre'] }}" style="width: 50px; height: auto;">
+                    <p>{{ $evento['nombre'] }} - Precio: {{ $evento['precio'] }}$</p>
+                </div>
+            @else
                 <p>{{ $evento }}</p>
-            </div>
+            @endif
         @endforeach
     @endif
 
@@ -172,7 +176,15 @@
         <p>No hay artículos en la cesta.</p>
     @else
         @foreach($cestaArticulo as $articulo)
-            <div class="cesta-item">{{ $articulo }}</div>
+            @if(is_array($articulo))
+                <div class="cesta-item">
+                    <img src="{{ $articulo['imagen'] }}" alt="{{ $articulo['nombre'] }}"
+                         style="width: 50px; height: auto;">
+                    <p>{{ $articulo['nombre'] }} - Precio: {{ $articulo['precio'] }}$</p>
+                </div>
+            @else
+                <p>{{ $articulo }}</p>
+            @endif
         @endforeach
     @endif
 
@@ -181,21 +193,8 @@
             @csrf
             <button type="submit">Pagar</button>
         </form>
-    @elseif(empty($cestaEvento) && empty($cestaArticulo))
-        <p></p>
-    @elseif(empty($cestaEvento) && !empty($cestaArticulo))
-        <form action="{{ route('pago') }}" method="get">
-            @csrf
-            <button type="submit">Pagar</button>
-        </form>
-    @elseif(!empty($cestaEvento) && empty($cestaArticulo))
-        <form action="{{ route('pago') }}" method="get">
-            @csrf
-            <button type="submit">Pagar</button>
-        </form>
     @endif
 </div>
-
 
 @if(session('mensaje'))
     <div id="mensaje" class="alert">

@@ -37,8 +37,8 @@ class PagoController extends Controller
         $data = $request->all();
 
         // Obtener los nombres de los artículos y entradas seleccionadas de la sesión
-        $data['entrada_seleccionada'] = $request->session()->get('cestaEvento');
-        $data['articulo_seleccionado'] = $request->session()->get('cestaArticulo');
+        $data['entrada_seleccionada'] = $request->session()->get('cestaEvento', []);
+        $data['articulo_seleccionado'] = $request->session()->get('cestaArticulo', []);
 
         // Redirigir a la vista 'confirmado' con los datos
         return redirect()->route('confirmado')->with('data', $data);
@@ -47,7 +47,7 @@ class PagoController extends Controller
     public function confirmado()
     {
         // Obtener los datos de la sesión
-        $data = session('data');
+        $data = session('data', []);
 
         // Mostrar la vista 'confirmado' con los datos
         return view('confirmado', compact('data'));
