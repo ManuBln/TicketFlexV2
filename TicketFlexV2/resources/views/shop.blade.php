@@ -185,9 +185,9 @@
     <div class="card-section">
         <div class="card" style="background-image: url('{{ asset('images/entrada1.jpg') }}');">
             <div class="card-content">
-                <h2 class="card-title">Título del Grupo 1</h2>
-                <p class="card-details">Ubicación: Lugar 1</p>
-                <p class="card-details">Fecha y Hora: 20/05/2024, 20:00</p>
+                <h2 class="card-title">Red Hot Chili Peppers</h2>
+                <p class="card-details">Madrid</p>
+                <p class="card-details">Fecha y Hora: 24/06/2024, 20:00</p>
                 <p class="card-price">Precio: $50</p>
                 <a href="#" class="buy-button">Comprar</a>
             </div>

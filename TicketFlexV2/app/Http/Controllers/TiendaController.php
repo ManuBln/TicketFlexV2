@@ -16,7 +16,7 @@ class TiendaController extends Controller
 
     public function eventos(Request $request)
     {
-        // $request->session()->forget(['cestaEvento', 'cestaArticulo']);
+        //$request->session()->forget(['cestaEvento', 'cestaArticulo']);
 
         $eventos = Evento::all(); // Obtener todos los eventos
         $articulos = Articulo::all();
@@ -24,34 +24,52 @@ class TiendaController extends Controller
         $cestaEvento = $request->session()->get('cestaEvento', []);
         $cestaArticulo = $request->session()->get('cestaArticulo', []);
 
+        // Obtener el último y el penúltimo artículo
+        $articuloActual = Articulo::orderBy('id', 'desc')->first();
+        $articuloAnterior = Articulo::where('id', '<', $articuloActual->id)->orderBy('id', 'desc')->first();
+
         return view('tienda')->with([
             'eventos' => $eventos,
             'articulos' => $articulos,
             'cestaEvento' => $cestaEvento,
-            'cestaArticulo' => $cestaArticulo
+            'cestaArticulo' => $cestaArticulo,
+            'articuloActual' => $articuloActual,
+            'articuloAnterior' => $articuloAnterior
         ]); // Pasar las variables a la vista
-    }   
+    }
 
 
     public function cestaEntrada(Request $request, String $nombre)
     {
-        $mensaje = "Entrada añadida a la cesta";
-        $request->session()->push('cestaEvento', $nombre); // Añadir el evento a la cesta en la sesión
-        $request->session()->flash('mensaje', $mensaje); // Guardar un mensaje en la sesión
-        return redirect()->back(); // Redirigir a la página anterior con un mensaje
+        $evento = Evento::where('nombre_evento', $nombre)->first();
+
+        $item = [
+            'nombre' => $evento->nombre_evento,
+            'imagen' => $evento->imagen,
+            'precio' => $evento->precio
+        ];
+
+        $request->session()->push('cestaEvento', $item);
+        $request->session()->flash('mensaje', 'Entrada añadida a la cesta');
+        return redirect()->back();
     }
 
     public function cestaArticulo(Request $request, String $nombre)
     {
-        $mensaje = "Artículo añadido a la cesta";
-        $request->session()->push('cestaArticulo', $nombre); // Añadir el artículo a la cesta en la sesión
-        $request->session()->flash('mensaje', $mensaje); // Guardar un mensaje en la sesión
-        return redirect()->back(); // Redirigir a la página anterior con un mensaje
+        $articulo = Articulo::where('nombre', $nombre)->first();
+
+        $item = [
+            'nombre' => $articulo->nombre,
+            'imagen' => $articulo->imagen_ruta, // Asegúrate de tener el campo 'imagen' en tu tabla de artículos
+            'precio' => $articulo->precio
+        ];
+
+        $request->session()->push('cestaArticulo', $item);
+        $request->session()->flash('mensaje', 'Artículo añadido a la cesta');
+        return redirect()->back();
     }
 
-  
 
-    public function cestaDrop()
-    {
-    }
+
+
 }
