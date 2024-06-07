@@ -1,0 +1,201 @@
+/* Estilos CSS pueden ir aquí */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+/* Estilos generales para la contenedor */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Título de la sección */
+.container h1 {
+    text-align: center;
+    margin-bottom: 40px;
+    color: #ffffff;
+}
+
+/* Flex container para las tarjetas */
+.container > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Estilos para las tarjetas */
+.card {
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    max-width: calc(100% - 40px);
+    flex: 1 1 calc(100% - 40px);
+    display: flex;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.card-content {
+    display: flex;
+    width: 100%;
+}
+
+.card-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.card-image {
+    flex: 1;
+    background-size: cover;
+    background-position: center;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    position: relative;
+}
+
+.card-image .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.card-price, .card-date, .card-capacity, .card-description {
+    margin-bottom: 10px;
+    color: #b0b0b0;
+}
+
+.card form {
+    margin-top: auto; /* Empuja el formulario al fondo */
+}
+
+.card button {
+    background-color: #ff4081;
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.card button:hover {
+    background-color: #ff1c61;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .card {
+        max-width: calc(100% - 20px);
+        flex: 1 1 calc(100% - 20px);
+    }
+
+    .card-content {
+        flex-direction: column;
+    }
+
+    .card-image {
+        height: 200px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    .card-image .overlay {
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        max-width: 100%;
+        flex: 1 1 100%;
+    }
+
+    .card-content {
+        flex-direction: column;
+    }
+
+    .card-image {
+        height: 150px;
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+
+    .card-image .overlay {
+        border-top-right-radius: 10px;
+        border-bottom-left-radius: 10px;
+    }
+}
+
+/* Estilos adicionales existentes */
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px;
+    background-color: #4CAF50;
+    color: white;
+    z-index: 9999;
+    animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+    from {
+        right: -100%;
+        /* Comienza fuera de la pantalla en el lado derecho */
+    }
+
+    to {
+        right: 20px;
+        /* Termina en la posición deseada */
+    }
+}
+
+.cesta-container {
+    margin-top: 50px;
+    padding: 15px;
+    background-color: #1f1f1f;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cesta-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-bottom: 1px solid #333;
+}
+
+.cesta-item:last-child {
+    border-bottom: none;
+}
