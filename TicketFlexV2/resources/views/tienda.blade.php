@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documento HTML Básico</title>
+    <title>Shop</title>
     <style>
         /* Estilos CSS pueden ir aquí */
         body {

@@ -56,13 +56,13 @@ class EventosSeeder extends Seeder
             "sala_id" => 1,
         ]);
         Evento::create([
-            "nombre_evento" => "Evento 5",
-            "imagen" => "imagen1.jpg",
-            "precio" => 10.00,
+            "nombre_evento" => "Taylor Swift Eras Tour",
+            "imagen" => "https://www.mondosonoro.com/wp-content/uploads/2023/06/TaylorSwift.jpg",
+            "precio" => 90.00,
             "fecha_hora" => "2024-05-06 15:56:40",
-            "descripcion" => "Descripción del evento 1",
-            "aforo" => 1000,
-            "aforo_disponible" => 1000,
+            "descripcion" => "El mejor evento de la historia de la música, Taylor Swift en concierto. No te lo pierdas, será una noche inolvidable.",
+            "aforo" => 80000,
+            "aforo_disponible" => 1500,
             "sala_id" => 1,
         ]);
     }
