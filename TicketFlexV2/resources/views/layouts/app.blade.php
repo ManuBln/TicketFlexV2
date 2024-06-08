@@ -16,6 +16,41 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <style>
+        @font-face {
+    font-family: 'ticketflex';
+    src: url('../fuentes/ticketflex.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+h1 {
+    font-family: 'ticketflex', sans-serif;
+    font-size: 7rem;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+    h2{
+        color:white;
+        font-size: 4rem;
+    }
+
+        .gradient-background {
+            background: linear-gradient(300deg,#e620d5,#0c000a,#110111);
+            background-size: 180% 180%;
+            animation: gradient-animation 30s ease infinite;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
 
           .titulo {
     width: 40%;
@@ -48,67 +83,67 @@
 }
     </style>
 </head>
-<body class="bg-black">
+<body class="gradient-background">
     <div id="app">
-    <img class="titulo" src="{{ asset('images/logo.png') }}" alt="logo2">
-    <nav class="navbar navbar-expand-lg navbar-dark  p-5">
-            <div class="container">
-                <a class="navbar-brand bordes" href="{{route('home')}}" target="_self">Home</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <h1>TICKETFLEX</h1>
+        <nav class="navbar navbar-expand-lg p-5" style="background-color: transparent;">
+    <div class="container">
+        <a class="navbar-brand text-white bordes" href="{{route('home')}}" target="_self">Inicio</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                            <a class="nav-link bordes" href="#About" >About</a>
-                        </li>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Left Side Of Navbar -->
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link text-white bordes" href="#About">Sobre Nosotros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white bordes" href="/shop">Tienda</a>
+                </li>
+            </ul>
+
+            <!-- Right Side Of Navbar -->
+            <ul class="navbar-nav ms-auto">
+                <!-- Authentication Links -->
+                @guest
+                    @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="nav-link bordes" href="/shop" >Shop</a>
+                            <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Iniciar Sesión') }}</a>
                         </li>
-                    </ul>
+                    @endif
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Iniciar Sesión') }}</a>
-                                </li>
-                            @endif
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Registrarme') }}</a>
+                        </li>
+                    @endif
+                @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
 
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarme') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                @endguest
+            </ul>
+        </div>
+    </div>
+</nav>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                    
-                </div>
-            </div>
-        </nav>
 
         <main class="py-4">
             @yield('content')

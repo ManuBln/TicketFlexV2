@@ -12,10 +12,18 @@
     padding: 0px;
     box-sizing: border-box;
   }
-  .titulo {
-    width: 40%;
-    margin: auto;
-    display: flex;
+  @font-face {
+    font-family: 'ticketflex';
+    src: url('../fuentes/ticketflex.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+h1 {
+    font-family: 'ticketflex', sans-serif;
+    font-size: 7rem;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 20px;
 }
   .bordes {
     position: relative;
@@ -46,12 +54,12 @@
     <body class="bg-black text-white">
     <header class="text-white">
         <div class="container-fluid col-12">
-        <img class="titulo" src="{{ asset('images/logo.png') }}" alt="logo2">
+        <h1>TICKETFLEX</h1>
             <!--<h1 class="pt-2 text-white text-center w-100 col-12">Guadalupe Plata</h1>-->
         </div>
         <nav class="navbar navbar-expand-lg navbar-dark  p-5">
             <div class="container">
-                <a class="navbar-brand bordes" href="{{route('home')}}" target="_self">Home</a>
+                <a class="navbar-brand bordes" href="{{route('home')}}" target="_self">Inicio</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -59,15 +67,15 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link bordes" href="#About" >About</a>
+                            <a class="nav-link bordes" href="#About" >Sobre Nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link bordes" href="/shop" >Shop</a>
+                            <a class="nav-link bordes" href="/shop" >Tienda</a>
                         </li>
                         @if (Route::has('login'))
                                 @auth
                                     <li class="nav-item">
-                                        <a href="{{ url('/home') }}" class="nav-link bordes">Home</a>
+                                        <a href="{{ url('/home') }}" class="nav-link bordes">Inicio</a>
                                     </li>
                                 @else
                                     <li class="nav-item">
@@ -98,33 +106,13 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="https://fotografias.antena3.com/clipping/cmsimages01/2023/07/18/460974AC-1C0A-48FA-8582-EF2683B236BD/plantilla-entrada-festival-verano_98.jpg?crop=3000,1688,x0,y158&width=1900&height=1069&optimize=low&format=webply" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <!--1417x921 fotos-->
-                            <h5>Guadalupe plata</h5>
-                            <p>Rising up from the town of Úbeda, deep in Andalusia near Jaén, Guadalupe Plata have
-                                become legends for their provocative, deeply affecting blues and boogie music, creating
-                                a psychedelic landscape that is as darkly surrealistic as it is infectious.</p>
-                        </div>
+                        <img src="{{ asset('images/Musica.jpg') }}" class="d-block w-100" alt="...">
                     </div>
                     <div class="carousel-item">
                         <img src="https://assets-global.website-files.com/649327d3c75e7d5a080dfd24/6524731228e0e6cf2c3dc044_20231009T0924-740b7ee2-d6e1-4b58-b0f0-246bf3273896.jpeg" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <p>Their music is the result of a chemical experiment that mixes the raw edges of Hound Dog
-                                Taylor, Skip James, and John Lee Hooker with the insanity of Screamin’ Jay Hawkins, the
-                                winding guitars of Elmore James and Ennio Morricone, and the post-modern madness of Jon
-                                Spencer, The Fall, Captain Beefheart, the Gun Club, and Nick Cave.</p>
-                        </div>
                     </div>
                     <div class="carousel-item">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/3/31/Slaughterkyiv21-3916_sv_2.jpg" class="d-block w-100" alt="...">
-                        <div class="carousel-caption d-none d-md-block">
-                            <p>In 2013 they began their trophy collection, picking up the coveted Impala Award for Best
-                                European Rock Band, as well as Artist of the Year, Best Live Act, and Best Rock Album
-                                from the Independent Music Awards, as well as Best Modern Music from Critical Eye. Their
-                                music has seeped into the American consciousness on such television shows as Showtime’s
-                                Shameless and HBOs How to Make it in America.</p>
-                        </div>
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"

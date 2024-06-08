@@ -1,201 +1,359 @@
-/* Estilos CSS pueden ir aquí */
+@font-face {
+    font-family: 'ticketflex';
+    src: url('../fuentes/ticketflex.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 body {
+    background-color: #121212;
+    color: #ffffff;
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #121212;
-    color: #e0e0e0;
 }
 
-/* Estilos generales para la contenedor */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-}
-
-/* Título de la sección */
-.container h1 {
-    text-align: center;
-    margin-bottom: 40px;
-    color: #ffffff;
-}
-
-/* Flex container para las tarjetas */
-.container > div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-/* Estilos para las tarjetas */
-.card {
-    background-color: #1f1f1f;
-    border: 1px solid #333;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    margin: 20px;
-    max-width: calc(100% - 40px);
-    flex: 1 1 calc(100% - 40px);
-    display: flex;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-}
-
-.card-content {
-    display: flex;
-    width: 100%;
-}
-
-.card-info {
+.entradas {
     padding: 20px;
     display: flex;
     flex-direction: column;
-    flex: 1;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 }
 
-.card-image {
-    flex: 1;
+h2 {
+    font-family: 'ticketflex', sans-serif;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-size: 5rem;
+}
+h3{
+    font-family: 'ticketflex', sans-serif;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-size: 3rem;
+
+}
+
+.entrada {
+    background-color: #000000;
+    width: 70%;
+    border: 0.5px solid #a8a8a8;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.entrada:hover {
+    border-color: #e620d5; /* Cambia el color del borde al pasar el ratón */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Aplica una sombra */
+    transform: translateY(-5px); /* Eleva ligeramente la entrada */
+    transition: all 0.3s; /* Añade una transición */
+}
+
+
+.entrada-content {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .entrada-content {
+        flex-direction: row;
+    }
+}
+
+.entrada-info {
+    padding: 20px;
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.entrada-info:hover {
+    background: linear-gradient(300deg,#e620d5,#0c000a,#110111);
+    background-size: 180% 180%;
+    animation: gradient-animation 18s ease infinite;
+}
+
+
+@media (min-width: 768px) {
+    .entrada-info {
+        padding: 40px;
+    }
+}
+
+.entrada-title {
+    font-size: 36px; 
+    margin-bottom: 10px;
+    color: #ffffff; 
+    text-transform: uppercase; 
+}
+.entrada-title:hover {
+    color: #e620d5; 
+    transition: all 0.3s;
+}
+
+.entrada-price, .entrada-date, .entrada-description, .entrada-capacity {
+    margin-bottom: 10px;
+    color: #ffffff;
+    text-align: left; 
+}
+
+form {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.button_slide {
+    color: #ffffff;
+    background-color: #000000;
+    border: 2px solid #ffffff;
+    padding: 18px 36px;
+    display: inline-block;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 #ffffff;
+    transition: ease-out 0.4s;
+}
+
+.slide_right:hover {
+    box-shadow: inset 400px 0 0 0 #e620d5;
+    color: black;
+    border: 2px solid #e620d5;
+}
+
+.entrada-image {
     background-size: cover;
     background-position: center;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    position: relative;
+    width: 100%;
+    height: 400px;
 }
 
-.card-image .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+@media (min-width: 768px) {
+    .entrada-image {
+        width: 50%;
+        height: auto;
+    }
+}
+/*--------------MERCHANDISING-----------------*/
+
+
+.articulos {
+    padding: 20px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
 }
 
-.card-title {
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 15px;
-    color: #ffffff;
+.articulitoss {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch; /* Cambiado a stretch para igualar las alturas */
+    align-content: center;
+    gap: 20px;
 }
 
-.card-price, .card-date, .card-capacity, .card-description {
+.merch {
+    background-color: #000000;
+    width: 30%;
+    border: 0.5px solid #a8a8a8;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column; /* Asegura que los elementos internos se distribuyan verticalmente */
+}
+
+.merch:hover {
+    border-color: #e620d5;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+    background: linear-gradient(300deg,#e620d5,#0c000a,#110111);
+    background-size: 180% 180%;
+    animation: gradient-animation 18s ease infinite;
+}
+
+.merch-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Asegura que los elementos internos se distribuyan correctamente */
+    padding: 20px;
+    flex-grow: 1; /* Permite que .merch-content crezca para llenar .merch */
+}
+
+.merch-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.merch-title {
+    font-size: 18px;
     margin-bottom: 10px;
-    color: #b0b0b0;
-}
-
-.card form {
-    margin-top: auto; /* Empuja el formulario al fondo */
-}
-
-.card button {
-    background-color: #ff4081;
-    border: none;
-    color: white;
-    padding: 12px 24px;
+    color: #ffffff;
+    text-transform: uppercase;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
+}
+
+.merch-price {
     font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+    color: #ffffff;
+    text-align: center;
 }
 
-.card button:hover {
-    background-color: #ff1c61;
+.merch-date, .merch-capacity {
+    margin-bottom: 10px;
+    color: #ffffff;
+    text-align: center;
 }
 
-/* Estilos responsivos */
-@media (max-width: 768px) {
-    .card {
-        max-width: calc(100% - 20px);
-        flex: 1 1 calc(100% - 20px);
-    }
-
-    .card-content {
-        flex-direction: column;
-    }
-
-    .card-image {
-        height: 200px;
-        border-top-right-radius: 10px;
-        border-bottom-left-radius: 10px;
-    }
-
-    .card-image .overlay {
-        border-top-right-radius: 10px;
-        border-bottom-left-radius: 10px;
-    }
+.merch-img {
+    width: 100%;
+    height: 200px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    max-width: 150px;
+    align-self: center; /* Centra la imagen dentro de la tarjeta */
+}
+.drops {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-@media (max-width: 480px) {
-    .card {
-        max-width: 100%;
-        flex: 1 1 100%;
-    }
-
-    .card-content {
-        flex-direction: column;
-    }
-
-    .card-image {
-        height: 150px;
-        border-top-right-radius: 10px;
-        border-bottom-left-radius: 10px;
-    }
-
-    .card-image .overlay {
-        border-top-right-radius: 10px;
-        border-bottom-left-radius: 10px;
-    }
+.drops h1 {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-/* Estilos adicionales existentes */
-.alert {
+.drop-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.drop {
+    width: 45%;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.drop-content {
+    padding: 15px;
+}
+
+.drop-img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.drop-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.drop-price {
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.drop-date, .drop-capacity {
+    margin-bottom: 10px;
+}
+
+/*--------------Carrito-----------------*/
+.cart-button {
     position: fixed;
     top: 20px;
     right: 20px;
-    padding: 15px;
-    background-color: #4CAF50;
-    color: white;
-    z-index: 9999;
-    animation: slideIn 0.5s ease forwards;
+    background-color: #e620d5;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white; /* Asegura que el icono del carrito sea blanco */
 }
 
-@keyframes slideIn {
-    from {
-        right: -100%;
-        /* Comienza fuera de la pantalla en el lado derecho */
-    }
+.cart-icon {
+    width: 24px;
+    height: 24px;
+}
 
-    to {
-        right: 20px;
-        /* Termina en la posición deseada */
-    }
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #343a40;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+}
+
+.sidebar .close-button {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 36px;
+    border: none;
+    background: none;
+    cursor: pointer;
 }
 
 .cesta-container {
-    margin-top: 50px;
-    padding: 15px;
-    background-color: #1f1f1f;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }
 
 .cesta-item {
+    display: flex;
+    align-items: center;
     margin-bottom: 10px;
-    padding: 10px;
-    border-bottom: 1px solid #333;
 }
 
-.cesta-item:last-child {
-    border-bottom: none;
+.cesta-item img {
+    margin-right: 10px;
 }
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e620d5;
+}
+
+.alert {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    margin: 20px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+}
+
