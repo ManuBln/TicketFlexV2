@@ -68,7 +68,7 @@
             background-color: #45a049;
         }
 
-        .alert {
+        #mensaje{
             position: fixed;
             top: 20px;
             right: 20px;
@@ -110,10 +110,13 @@
         }
     </style>
 </head>
+<body>
 @extends('layouts.app')
 
 @section('content')
-    <body>
+
+
+
     <div class="container">
         <h1>Entradas</h1>
         <div style="display: flex;">
@@ -177,43 +180,43 @@
                     </div>
                 </div>
             @endif
+        </div>
+    </div>
 
+    <div class="container cesta-container">
+        <h2>Contenido de la Cesta de Eventos</h2>
+        @if(empty($cestaEvento))
+            <p>No hay eventos en la cesta.</p>
+        @else
+            @foreach($cestaEvento as $evento)
+                @if(is_array($evento))
+                    <div class="cesta-item">
+                        <img src="{{ $evento['imagen'] }}" alt="{{ $evento['nombre'] }}"
+                             style="width: 50px; height: auto;">
+                        <p>{{ $evento['nombre'] }} - Precio: {{ $evento['precio'] }}$</p>
+                    </div>
+                @else
+                    <p>{{ $evento }}</p>
+                @endif
+            @endforeach
+        @endif
 
-
-<div class="container cesta-container">
-    <h2>Contenido de la Cesta de Eventos</h2>
-    @if(empty($cestaEvento))
-        <p>No hay eventos en la cesta.</p>
-    @else
-        @foreach($cestaEvento as $evento)
-            @if(is_array($evento))
-                <div class="cesta-item">
-                    <img src="{{ $evento['imagen'] }}" alt="{{ $evento['nombre'] }}" style="width: 50px; height: auto;">
-                    <p>{{ $evento['nombre'] }} - Precio: {{ $evento['precio'] }}$</p>
-                </div>
-            @else
-                <p>{{ $evento }}</p>
-            @endif
-        @endforeach
-    @endif
-
-
-    <h2>Contenido de la Cesta de Artículos</h2>
-    @if(empty($cestaArticulo))
-        <p>No hay artículos en la cesta.</p>
-    @else
-        @foreach($cestaArticulo as $articulo)
-            @if(is_array($articulo))
-                <div class="cesta-item">
-                    <img src="{{ $articulo['imagen'] }}" alt="{{ $articulo['nombre'] }}"
-                         style="width: 50px; height: auto;">
-                    <p>{{ $articulo['nombre'] }} - Precio: {{ $articulo['precio'] }}$</p>
-                </div>
-            @else
-                <p>{{ $articulo }}</p>
-            @endif
-        @endforeach
-    @endif
+        <h2>Contenido de la Cesta de Artículos</h2>
+        @if(empty($cestaArticulo))
+            <p>No hay artículos en la cesta.</p>
+        @else
+            @foreach($cestaArticulo as $articulo)
+                @if(is_array($articulo))
+                    <div class="cesta-item">
+                        <img src="{{ $articulo['imagen'] }}" alt="{{ $articulo['nombre'] }}"
+                             style="width: 50px; height: auto;">
+                        <p>{{ $articulo['nombre'] }} - Precio: {{ $articulo['precio'] }}$</p>
+                    </div>
+                @else
+                    <p>{{ $articulo }}</p>
+                @endif
+            @endforeach
+        @endif
 
         @if(!empty($cestaEvento) || !empty($cestaArticulo))
             @if(Auth::user())
@@ -224,12 +227,9 @@
             @else
                 <form action="{{ route('register') }}" method="get">
                     @csrf
-                    <button type="submit">Registrase para pagar</button>
+                    <button type="submit">Registrarse para pagar</button>
                 </form>
             @endif
-
-        @elseif(empty($cestaEvento) && empty($cestaArticulo))
-            <p></p>
         @elseif(empty($cestaEvento) && !empty($cestaArticulo))
             <form action="{{ route('pago') }}" method="get">
                 @csrf
@@ -258,6 +258,7 @@
             }
         }, 3000);
     </script>
-    </body>
+
 @endsection
+</body>
 </html>

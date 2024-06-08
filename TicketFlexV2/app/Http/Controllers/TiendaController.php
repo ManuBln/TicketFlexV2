@@ -60,7 +60,7 @@ class TiendaController extends Controller
 
         $item = [
             'nombre' => $articulo->nombre,
-            'imagen' => $articulo->imagen_ruta, // Asegúrate de tener el campo 'imagen' en tu tabla de artículos
+            'imagen' => $articulo->imagen_ruta,
             'precio' => $articulo->precio
         ];
 

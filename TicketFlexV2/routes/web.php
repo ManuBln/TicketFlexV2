@@ -18,8 +18,7 @@ use Barryvdh\DomPDF\Facade\Pdf as PDF;
 |
 */
 
-Route::post('/procesar-pago', [PagoController::class, 'procesarPago'])->name('procesar-pago');
-Route::get('/confirmado', [PagoController::class, 'confirmado'])->name('confirmado');
+
 
 Route::get('/articulo/{nombre}', [TiendaController::class, 'drops'])->name('articulo.drops');
 
@@ -44,9 +43,11 @@ Route::get('/tienda', [TiendaController::class, 'eventos'])->name('tienda');
 Route::post('/tienda/entrada/{nombre}', [TiendaController::class, 'cestaEntrada'])->name('cestaEntrada');
 Route::post('/tienda/articulo/{nombre}', [TiendaController::class, 'cestaArticulo'])->name('cestaArticulo');
 
-Route::get('/pago', function () {
-    return view('pago');
-})->name('pago');
+Route::get('/pago', [PagoController::class, 'pago'])->name('pago');
+Route::post('/procesar-pago', [PagoController::class, 'procesarPago'])->name('procesar-pago');
+Route::get('/confirmado', [PagoController::class, 'confirmado'])->name('confirmado');
+
+
 
 Route::get('/merch', function () {
     return view('merch');
@@ -90,3 +91,18 @@ Route::get('/pdf', function () {
 
 Route::post('/procesar-pago', [PagoController::class, 'procesarPago'])->name('procesar-pago');
 Route::get('/confirmado', [PagoController::class, 'confirmado'])->name('confirmado');
+
+
+Route::get('/portero', function () {
+    $usuarioProtegido = 'portero@portero.com';
+
+    if (Auth::check() && Auth::user()->email === $usuarioProtegido) {
+        // Tu lógica para la ruta protegida
+        return view('portero');
+    }
+
+    // Redirigir a la ruta welcome si el email no es permitido
+    return redirect()->route('home');
+})->name('portero');
+
+

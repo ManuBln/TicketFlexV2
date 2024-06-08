@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ConfirmacionPago;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PagoController extends Controller
 {
@@ -39,6 +41,9 @@ class PagoController extends Controller
         // Obtener los nombres de los artículos y entradas seleccionadas de la sesión
         $data['entrada_seleccionada'] = $request->session()->get('cestaEvento', []);
         $data['articulo_seleccionado'] = $request->session()->get('cestaArticulo', []);
+
+        // Enviar el correo de confirmación
+        Mail::to($data['email'])->send(new ConfirmacionPago($data));
 
         // Redirigir a la vista 'confirmado' con los datos
         return redirect()->route('confirmado')->with('data', $data);
