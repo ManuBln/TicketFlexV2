@@ -87,18 +87,18 @@
     <div class="drops">
         <h2>DROPS</h2>
         <div class="dops-contenedor">
-            {{-- Artículo Actual --}}
+
             @foreach($articulosConDrop as $articulo)
                 <div class="drop">
                     <div class="drop-content">
-                        <img class="drop-img" src="{{ $articuloActual->imagen_ruta }}"
-                             alt="{{ $articuloActual->nombre }}"
+                        <img class="drop-img" src="{{ $articulo->imagen_ruta }}"
+                             alt="{{ $articulo->nombre }}"
                              style="width: 100%; border-radius: 5px; margin-bottom: 10px;">
-                        <div class="drop-title">{{ $articuloActual->nombre }}</div>
-                        <div class="drop-price">{{ $articuloActual->precio }}</div>
-                        <div class="drop-date">Descripción: {{ $articuloActual->descripcion }}</div>
-                        <div class="drop-capacity">Unidades: {{ $articuloActual->unidades }}</div>
-                        <form action="{{ route('cestaArticulo', ['nombre' => $articuloActual->nombre]) }}"
+                        <div class="drop-title">{{ $articulo->nombre }}</div>
+                        <div class="drop-price">{{ $articulo->precio }}</div>
+                        <div class="drop-date">Descripción: {{ $articulo->descripcion }}</div>
+                        <div class="drop-capacity">Unidades: {{ $articulo->unidades }}</div>
+                        <form action="{{ route('cestaArticulo', ['nombre' => $articulo->nombre]) }}"
                               method="POST">
                             @csrf
                             <button class="button_slide slide_right" type="submit">Añadir al carrito</button>

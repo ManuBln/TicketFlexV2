@@ -73,9 +73,16 @@
     </div>
 
     <style>
+        h1 {
+            font-family: 'ticketflex', sans-serif;
+            font-size: 7rem;
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+        }
         .fondo-negro {
             color: #FFF;
-            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family:'Segoe UI', Tahoma,  Verdana, sans-serif;
             font-size: smaller;
             font-weight: bold;    }
 
