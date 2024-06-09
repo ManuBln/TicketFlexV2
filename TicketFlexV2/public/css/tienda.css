@@ -1,0 +1,392 @@
+@font-face {
+    font-family: 'ticketflex';
+    src: url('../fuentes/ticketflex.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.entradas {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+h2 {
+    font-family: 'ticketflex', sans-serif;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-size: 5rem;
+}
+h3{
+    font-family: 'ticketflex', sans-serif;
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 20px;
+    font-size: 3rem;
+
+}
+
+.entrada {
+    background-color: #000000;
+    width: 70%;
+    border: 0.5px solid #a8a8a8;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+.entrada:hover {
+    border-color: #e620d5; /* Cambia el color del borde al pasar el ratón */
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Aplica una sombra */
+    transform: translateY(-5px); /* Eleva ligeramente la entrada */
+    transition: all 0.3s; /* Añade una transición */
+}
+
+
+.entrada-content {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .entrada-content {
+        flex-direction: row;
+    }
+}
+
+.entrada-info {
+    padding: 20px;
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.entrada-info:hover {
+    background: linear-gradient(300deg,#e620d5,#0c000a,#110111);
+    background-size: 180% 180%;
+    animation: gradient-animation 18s ease infinite;
+}
+
+
+@media (min-width: 768px) {
+    .entrada-info {
+        padding: 40px;
+    }
+}
+
+.entrada-title {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+.entrada-title:hover {
+    color: #e620d5;
+    transition: all 0.3s;
+}
+
+.entrada-price, .entrada-date, .entrada-description, .entrada-capacity {
+    margin-bottom: 10px;
+    color: #ffffff;
+    text-align: left;
+}
+
+form {
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+.button_slide {
+    color: #ffffff;
+    background-color: #000000;
+    border: 2px solid #ffffff;
+    padding: 18px 36px;
+    display: inline-block;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 14px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: inset 0 0 0 0 #ffffff;
+    transition: ease-out 0.4s;
+}
+
+.slide_right:hover {
+    box-shadow: inset 400px 0 0 0 #e620d5;
+    color: black;
+    border: 2px solid #e620d5;
+}
+
+.entrada-image {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 400px;
+}
+
+@media (min-width: 768px) {
+    .entrada-image {
+        width: 50%;
+        height: auto;
+    }
+}
+/*--------------MERCHANDISING-----------------*/
+
+
+.articulos {
+    padding: 20px;
+    gap: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+}
+
+.articulitoss {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch; /* Cambiado a stretch para igualar las alturas */
+    align-content: center;
+    gap: 20px;
+}
+
+.merch {
+    background-color: #000000;
+    width: 30%;
+    border: 0.5px solid #a8a8a8;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column; /* Asegura que los elementos internos se distribuyan verticalmente */
+}
+
+.merch:hover {
+    border-color: #e620d5;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+    background: linear-gradient(300deg,#e620d5,#0c000a,#110111);
+    background-size: 180% 180%;
+    animation: gradient-animation 18s ease infinite;
+}
+
+.merch-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Asegura que los elementos internos se distribuyan correctamente */
+    padding: 20px;
+    flex-grow: 1; /* Permite que .merch-content crezca para llenar .merch */
+}
+
+.merch-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.merch-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.merch-price {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.merch-date, .merch-capacity {
+    margin-bottom: 10px;
+    color: #ffffff;
+    text-align: center;
+}
+
+.merch-img {
+    width: 100%;
+    height: 200px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    max-width: 150px;
+    align-self: center; /* Centra la imagen dentro de la tarjeta */
+}
+.drops {
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.drops h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: white; /* Cambia el color del texto a blanco */
+}
+
+.drop-container {
+    display: flex;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    flex-wrap: wrap; /* Permite que los elementos se ajusten a la siguiente línea si es necesario */
+    gap: 20px; /* Añade espacio entre los elementos */
+}
+
+.drop {
+    width: 45%;
+    background-color: #000000;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    color: white; /* Cambia el color del texto a blanco */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos verticalmente */
+    text-align: center; /* Centra el texto */
+}
+
+.drop:hover {
+    border-color: #e620d5;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+    background: linear-gradient(300deg, #e620d5, #0c000a, #110111);
+    background-size: 180% 180%;
+    animation: gradient-animation 18s ease infinite;
+}
+
+.drop-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los elementos verticalmente */
+}
+
+.drop-img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.drop-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: white; /* Cambia el color del texto a blanco */
+}
+
+.drop-price {
+    color: white; /* Cambia el color del texto a blanco */
+    margin-bottom: 10px;
+}
+
+.drop-date, .drop-capacity {
+    margin-bottom: 10px;
+    color: white; /* Cambia el color del texto a blanco */
+}
+
+
+/*--------------Carrito-----------------*/
+.cart-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #e620d5;
+    border: none;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white; /* Asegura que el icono del carrito sea blanco */
+}
+
+.cart-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #343a40;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+}
+
+.sidebar .close-button {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    font-size: 36px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.cesta-container {
+    padding: 20px;
+}
+
+.cesta-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.cesta-item img {
+    margin-right: 10px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #e620d5;
+}
+
+.alert {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    margin: 20px;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+}
+
+.dops-contenedor{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch; /* Cambiado a stretch para igualar las alturas */
+    align-content: center;
+    gap: 20px;
+}

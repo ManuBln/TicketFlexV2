@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Articulo;
 use App\Models\Evento;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
 class TiendaController extends Controller
 {
     //
@@ -28,13 +28,24 @@ class TiendaController extends Controller
         $articuloActual = Articulo::orderBy('id', 'desc')->first();
         $articuloAnterior = Articulo::where('id', '<', $articuloActual->id)->orderBy('id', 'desc')->first();
 
+
+        $articulosConDrop = $articulos->filter(function ($articulo) {
+            return Str::startsWith($articulo->nombre, 'Drop');
+        });
+
+        $articulosSinDrop = $articulos->reject(function ($articulo) {
+            return Str::startsWith($articulo->nombre, 'Drop');
+        });
+
         return view('tienda')->with([
             'eventos' => $eventos,
             'articulos' => $articulos,
             'cestaEvento' => $cestaEvento,
             'cestaArticulo' => $cestaArticulo,
             'articuloActual' => $articuloActual,
-            'articuloAnterior' => $articuloAnterior
+            'articuloAnterior' => $articuloAnterior,
+            'articulosConDrop' => $articulosConDrop,
+            'articulosSinDrop' => $articulosSinDrop
         ]); // Pasar las variables a la vista
     }
 
@@ -60,7 +71,7 @@ class TiendaController extends Controller
 
         $item = [
             'nombre' => $articulo->nombre,
-            'imagen' => $articulo->imagen_ruta, // Asegúrate de tener el campo 'imagen' en tu tabla de artículos
+            'imagen' => $articulo->imagen_ruta,
             'precio' => $articulo->precio
         ];
 
