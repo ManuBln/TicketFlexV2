@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Mail\Notification;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
+use App\Http\Controllers\TicketController;
 
 /*
 |--------------------------------------------------------------------------
@@ -92,6 +93,8 @@ Route::get('/pdf', function () {
 Route::post('/procesar-pago', [PagoController::class, 'procesarPago'])->name('procesar-pago');
 Route::get('/confirmado', [PagoController::class, 'confirmado'])->name('confirmado');
 
+
+Route::post('/portero', [TicketController::class, 'fetchEntrada'])->name('portero');
 
 Route::get('/portero', function () {
     $usuarioProtegido = 'portero@portero.com';
