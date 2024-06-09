@@ -156,7 +156,7 @@
                 @if(Auth::user())
                     <form action="{{ route('pago') }}" method="get">
                         @csrf
-                        <button type="submit" class="btn btn-primary">Pagar</button>
+                        <button class="button_slide slide_right" type="submit">Pagar</button>
                     </form>
                 @else
                     <form action="{{ route('register') }}" method="get">

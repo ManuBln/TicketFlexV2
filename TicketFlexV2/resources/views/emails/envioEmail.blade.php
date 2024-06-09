@@ -81,11 +81,15 @@
 <div class="contenedor">
     <img src="https://preview.fontget.com/tmp/6665bf261b8bc.png" class="d-block w-100" alt="...">
     <p class="gracias">
-        Estimado/a (nombre del cliente),
+        Estimado/a {{ $data['name']}},
 
         ¡Gracias por su compra en TicketFlex!
-    <p>Los artículos comprados le llegaran a {{ $data['shipping_address']}} dentro de unos días</p>
-    </p>
+
+    @if(isset($data['articulo_seleccionado']) && is_array($data['articulo_seleccionado']) && count($data['articulo_seleccionado']) > 0)
+        <p>Los artículos comprados le llegarán a {{ $data['shipping_address']}} dentro de unos días</p>
+    @endif
+
+
     {{--<p><strong>Nombre y Apellidos:</strong> {{ $data['name'] ?? 'Nombre no disponible' }}</p>
     <p><strong>Email:</strong> {{ $data['email'] ?? 'Email no disponible' }}</p>
     <p><strong>Dirección de Entrega:</strong> {{ $data['shipping_address'] ?? 'Dirección no disponible' }}</p>
@@ -101,6 +105,7 @@
         <h2>Entradas Seleccionadas:</h2>
         @foreach($data['entrada_seleccionada'] as $entrada)
             <p>{{ $entrada['nombre'] ?? 'Nombre no disponible' }} - Precio: {{ $entrada['precio'] ?? 'Precio no disponible' }}$</p>
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Commons_QR_code.png" alt="">
         @endforeach
     @else
         <p>No hay entradas seleccionadas.</p>
