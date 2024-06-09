@@ -270,5 +270,13 @@
             color: #f7b4fffc;
             font-weight: 10;
         }
+
+        h1 {
+            font-family: 'ticketflex', sans-serif;
+            font-size: 7rem;
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+        }
     </style>
 @endsection
