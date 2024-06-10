@@ -26,7 +26,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Contrase単a') }}</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Contraseña') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="formulario-control @error('password') es-invalido @enderror" name="password" required autocomplete="current-password">

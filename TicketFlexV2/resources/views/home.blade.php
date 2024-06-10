@@ -21,10 +21,10 @@
 
     .pFooter {
         margin-bottom: 20px;
-        margin-left: 920px;
-        margin-right: 280px;
         font-size: 19px;
         margin-top: 10px;
+        text-align: justify;
+        padding: 0 20px;
     }
 
     form {
@@ -63,14 +63,15 @@
     }
 
     .fotoFooter {
-        float: left;
-        margin-left: 320px;
-        width: 550px;
+        width: 100%;
+        max-width: 550px;
         border-radius: 10px;
+        margin: 40px;
     }
 
     .nosotros {
         margin-top: 40px;
+        text-align: center;
     }
 
     .copyRedes {
@@ -79,20 +80,62 @@
     }
 
     .pCopy {
-        float: left;
-        margin-left: 500px;
+        margin: 0;
         margin-top: 55px;
     }
 
     .redes1, .redes2, .redes3 {
         margin-top: 20px;
+        width: 50px;
+        margin: 0 10px;
     }
 
     footer {
         border-radius: 10px;
         background-color: #000000;
+        padding: 20px;
+    }
+
+    h1 {
+        font-family: 'ticketflex', sans-serif;
+        font-size: 4rem;
+        text-align: center;
+        color: white;
+        margin-bottom: 20px;
+    }
+
+    @media (min-width: 768px) {
+        .pFooter {
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 920px;
+        }
+
+        h1 {
+            font-size: 7rem;
+        }
+
+        .fotoFooter {
+            float: left;
+            margin-left: 320px;
+        }
+
+        .redes1 {
+            width: 87px;
+            margin-left: 620px;
+            padding: 20px;
+        }
+
+        .redes2 {
+            width: 50px;
+        }
+
+        .redes3 {
+            width: 75px;
+        }
     }
 </style>
+
 @extends('layouts.app')
 
 @section('content')
@@ -161,30 +204,32 @@
                 </button>
             </div>
         </section>
-        <div class="footerNosotros" id="About"><br><br>
-            <h3 class="h3Footer">Sobre Nosotros</h3>
-            <div class="nosotros">
+        <div class="footerNosotros" style="color: white;" id="About"><br><br>
+            <h3 class="h3Footer" >Sobre Nosotros</h3>
+            <div class="nosotros" style="display: flex">
                 <img class="fotoFooter"
                      src="https://img.freepik.com/free-vector/customer-support-illustration_23-2148904079.jpg">
-                <p class="pFooter"><br>
-                    Bienvenido a TicketFlex, tu nueva solución para la compra de tickets online. Nacimos en 2024 con la
-                    idea de facilitar la compra de tickets para eventos de todo tipo. En TicketFlex, creemos que asistir
-                    a tus eventos favoritos debe ser una experiencia sencilla y agradable, por eso hemos creado una
-                    plataforma que te permite comprar tus tickets de manera rápida y segura, sin tener que salir de
-                    casa.
-                </p>
-                <p class="pFooter">
-                    Detrás de TicketFlex hay un equipo apasionado y comprometido que trabaja con los mejores
-                    organizadores de eventos para ofrecerte una amplia variedad de opciones para que puedas encontrar el
-                    evento perfecto para ti. Ya sea que estés buscando entradas para un concierto, un festival o
-                    cualquier otro evento, en TicketFlex encontrarás lo que necesitas.</p>
+                <div style="width: 35%">
+                    <p class="pFooter"><br>
+                        Bienvenido a TicketFlex, tu nueva solución para la compra de tickets online. Nacimos en 2024 con la
+                        idea de facilitar la compra de tickets para eventos de todo tipo. En TicketFlex, creemos que asistir
+                        a tus eventos favoritos debe ser una experiencia sencilla y agradable, por eso hemos creado una
+                        plataforma que te permite comprar tus tickets de manera rápida y segura, sin tener que salir de
+                        casa.
+                    </p>
+                    <p class="pFooter">
+                        Detrás de TicketFlex hay un equipo apasionado y comprometido que trabaja con los mejores
+                        organizadores de eventos para ofrecerte una amplia variedad de opciones para que puedas encontrar el
+                        evento perfecto para ti. Ya sea que estés buscando entradas para un concierto, un festival o
+                        cualquier otro evento, en TicketFlex encontrarás lo que necesitas.</p>
+                </div>
             </div>
         </div>
         </section>
         <footer>
             <div class="py-4 my-4 border-top " style="width: 100%;">
                 <div class="footerContacto">
-                    <h3 class="h3Footer">Contacta con Nosotros</h3><br>
+                    <h3 class="h3Footer"  style="color: white;">Contacta con Nosotros</h3><br>
                     <form action="#" method="post">
                         <input type="email" name="email" placeholder="Tu correo electrónico" required>
                         <textarea name="mensaje" placeholder="Cuéntanos tu problema ..." rows="4"

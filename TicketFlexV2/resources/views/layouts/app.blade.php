@@ -81,11 +81,12 @@
             border-color: #ffffff;
             /* Cambia el color del borde en hover (en este caso, rojo) */
         }
+
     </style>
 </head>
 <body class="gradient-background">
 <div id="app">
-    <h1>TICKETFLEX</h1>
+    <h1 style="color: white; font-size: 7rem">TICKETFLEX</h1>
     <nav class="navbar navbar-expand-lg p-5" style="background-color: transparent;">
         <div class="container">
             <a class="navbar-brand text-white bordes" href="{{route('home')}}" target="_self">Inicio</a>
