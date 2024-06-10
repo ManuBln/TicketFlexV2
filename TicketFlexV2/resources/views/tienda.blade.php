@@ -42,7 +42,7 @@
                 <div class="entrada-content">
                     <div class="entrada-info">
                         <div class="entrada-title">{{ $evento->nombre_evento }}</div>
-                        <div class="entrada-price">Precio: {{ $evento->precio }}€</div>
+                        <div class="entrada-price">Precio: {{ $evento->precio }} €</div>
                         <div class="entrada-date">Fecha y Hora: {{ $evento->fecha_hora }}</div>
                         <div class="entrada-description">Descripción: {{ $evento->descripcion }}</div>
                         <div class="entrada-capacity">Aforo: {{ $evento->aforo }}</div>
@@ -68,7 +68,7 @@
                             <img class="merch-img" src="{{ $articulo->imagen_ruta }}" alt="{{ $articulo->nombre }}"
                                  style="width: 100%; border-radius: 5px; margin-bottom: 10px;">
                             <div class="merch-title">{{ $articulo->nombre }}</div>
-                            <div class="merch-price">Precio: {{ $articulo->precio }}€</div>
+                            <div class="merch-price">Precio: {{ $articulo->precio }} €</div>
                             <div class="merch-date">Descripción: {{ $articulo->descripcion }}</div>
                             <div class="merch-capacity">Unidades: {{ $articulo->unidades }}</div>
                             <form action="{{ route('cestaArticulo', ['nombre' => $articulo->nombre]) }}" method="POST">
@@ -93,7 +93,7 @@
                              alt="{{ $articulo->nombre }}"
                              style="width: 100%; border-radius: 5px; margin-bottom: 10px;">
                         <div class="drop-title">{{ $articulo->nombre }}</div>
-                        <div class="drop-price">Precio: {{ $articulo->precio }}€</div>
+                        <div class="drop-price">Precio: {{ $articulo->precio }} €</div>
                         <div class="drop-date">Descripción: {{ $articulo->descripcion }}</div>
                         <div class="drop-capacity">Unidades: {{ $articulo->unidades }}</div>
                         <form action="{{ route('cestaArticulo', ['nombre' => $articulo->nombre]) }}"
@@ -125,7 +125,7 @@
                         <div class="cesta-item">
                             <img src="{{ $evento['imagen'] }}" alt="{{ $evento['nombre'] }}"
                                  style="width: 50px; height: auto;">
-                            <p>{{ $evento['nombre'] }} - Precio: {{ $evento['precio'] }}$</p>
+                            <p>{{ $evento['nombre'] }} - Precio: {{ $evento['precio'] }} €</p>
                         </div>
                     @else
                         <p>{{ $evento }}</p>
@@ -142,7 +142,7 @@
                         <div class="cesta-item">
                             <img src="{{ $articulo['imagen'] }}" alt="{{ $articulo['nombre'] }}"
                                  style="width: 50px; height: auto;">
-                            <p>{{ $articulo['nombre'] }} - Precio: {{ $articulo['precio'] }}$</p>
+                            <p>{{ $articulo['nombre'] }} - Precio: {{ $articulo['precio'] }} €</p>
                         </div>
                     @else
                         <p>{{ $articulo }}</p>
