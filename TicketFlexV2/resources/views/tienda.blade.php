@@ -22,12 +22,10 @@
         @keyframes slideIn {
             from {
                 right: -100%;
-                /* Comienza fuera de la pantalla en el lado derecho */
             }
 
             to {
                 right: 20px;
-                /* Termina en la posición deseada */
             }
         }
     </style>

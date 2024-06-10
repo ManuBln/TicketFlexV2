@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // FETCH
 function check(code) {
     console.log("Checking code: " + code);
-    fetch('http://localhost/check.php', {
+    fetch('http://localhost/portero', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
