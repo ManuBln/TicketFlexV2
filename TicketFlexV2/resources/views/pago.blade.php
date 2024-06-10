@@ -143,17 +143,18 @@
                             <div class="row mb-3">
                                 <label for="cvv" class="col-md-4 col-form-label text-md-end">{{ __('CVV:') }}</label>
                                 <div class="col-md-6">
-                                    <input id="cvv" type="text"
+                                    <input id="cvv" type="password"
                                            class="formulario-control @error('cvv') es-invalido @enderror" name="cvv"
                                            required>
 
                                     @error('cvv')
-                                    <span class="retroalimentacion-invalida" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
+                                        <span class="retroalimentacion-invalida" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
                                     @enderror
                                 </div>
                             </div>
+
 
                             <!-- Dirección de Facturación -->
                             <div class="row mb-3">
@@ -268,6 +269,14 @@
         .contraseña-olvidada {
             color: #f7b4fffc;
             font-weight: 10;
+        }
+
+        h1 {
+            font-family: 'ticketflex', sans-serif;
+            font-size: 7rem;
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
         }
     </style>
 @endsection

@@ -22,12 +22,10 @@
         @keyframes slideIn {
             from {
                 right: -100%;
-                /* Comienza fuera de la pantalla en el lado derecho */
             }
 
             to {
                 right: 20px;
-                /* Termina en la posición deseada */
             }
         }
     </style>
@@ -44,7 +42,7 @@
                 <div class="entrada-content">
                     <div class="entrada-info">
                         <div class="entrada-title">{{ $evento->nombre_evento }}</div>
-                        <div class="entrada-price">Precio: {{ $evento->precio }}$</div>
+                        <div class="entrada-price">Precio: {{ $evento->precio }}€</div>
                         <div class="entrada-date">Fecha y Hora: {{ $evento->fecha_hora }}</div>
                         <div class="entrada-description">Descripción: {{ $evento->descripcion }}</div>
                         <div class="entrada-capacity">Aforo: {{ $evento->aforo }}</div>
@@ -70,7 +68,7 @@
                             <img class="merch-img" src="{{ $articulo->imagen_ruta }}" alt="{{ $articulo->nombre }}"
                                  style="width: 100%; border-radius: 5px; margin-bottom: 10px;">
                             <div class="merch-title">{{ $articulo->nombre }}</div>
-                            <div class="merch-price">{{ $articulo->precio }}</div>
+                            <div class="merch-price">Precio: {{ $articulo->precio }}€</div>
                             <div class="merch-date">Descripción: {{ $articulo->descripcion }}</div>
                             <div class="merch-capacity">Unidades: {{ $articulo->unidades }}</div>
                             <form action="{{ route('cestaArticulo', ['nombre' => $articulo->nombre]) }}" method="POST">
@@ -87,18 +85,18 @@
     <div class="drops">
         <h2>DROPS</h2>
         <div class="dops-contenedor">
-            {{-- Artículo Actual --}}
+
             @foreach($articulosConDrop as $articulo)
                 <div class="drop">
                     <div class="drop-content">
-                        <img class="drop-img" src="{{ $articuloActual->imagen_ruta }}"
-                             alt="{{ $articuloActual->nombre }}"
+                        <img class="drop-img" src="{{ $articulo->imagen_ruta }}"
+                             alt="{{ $articulo->nombre }}"
                              style="width: 100%; border-radius: 5px; margin-bottom: 10px;">
-                        <div class="drop-title">{{ $articuloActual->nombre }}</div>
-                        <div class="drop-price">{{ $articuloActual->precio }}</div>
-                        <div class="drop-date">Descripción: {{ $articuloActual->descripcion }}</div>
-                        <div class="drop-capacity">Unidades: {{ $articuloActual->unidades }}</div>
-                        <form action="{{ route('cestaArticulo', ['nombre' => $articuloActual->nombre]) }}"
+                        <div class="drop-title">{{ $articulo->nombre }}</div>
+                        <div class="drop-price">Precio: {{ $articulo->precio }}€</div>
+                        <div class="drop-date">Descripción: {{ $articulo->descripcion }}</div>
+                        <div class="drop-capacity">Unidades: {{ $articulo->unidades }}</div>
+                        <form action="{{ route('cestaArticulo', ['nombre' => $articulo->nombre]) }}"
                               method="POST">
                             @csrf
                             <button class="button_slide slide_right" type="submit">Añadir al carrito</button>
@@ -156,7 +154,7 @@
                 @if(Auth::user())
                     <form action="{{ route('pago') }}" method="get">
                         @csrf
-                        <button type="submit" class="btn btn-primary">Pagar</button>
+                        <button class="button_slide slide_right" type="submit">Pagar</button>
                     </form>
                 @else
                     <form action="{{ route('register') }}" method="get">

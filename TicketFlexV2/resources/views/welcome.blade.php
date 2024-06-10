@@ -158,37 +158,59 @@
         <h1>TICKETFLEX</h1>
         <!--<h1 class="pt-2 text-white text-center w-100 col-12">Guadalupe Plata</h1>-->
     </div>
-    <nav class="navbar navbar-expand-lg   p-5">
+    <nav class="navbar navbar-expand-lg p-5" style="background-color: transparent;">
         <div class="container">
-            <a class="navbar-brand bordes text-white" href="{{route('home')}}" target="_self">Inicio</a>
+            <a class="navbar-brand text-white bordes" href="{{route('home')}}" target="_self">Inicio</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <!-- Left Side Of Navbar -->
+                <ul class="navbar-nav me-auto">
+                    {{--                    <li class="nav-item">
+                                            <a class="nav-link text-white bordes" href="#About">Sobre Nosotros</a>
+                                        </li>--}}
                     <li class="nav-item">
-                        <a class="nav-link bordes text-white" href="#About" >Sobre Nosotros</a>
+                        <a class="nav-link text-white bordes" href="/tienda">Tienda</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link bordes text-white" href="/tienda" >Tienda</a>
-                    </li>
-                    @if (Route::has('login'))
-                        @auth
+                </ul>
+
+                <!-- Right Side Of Navbar -->
+                <ul class="navbar-nav ms-auto">
+                    <!-- Authentication Links -->
+                    @guest
+                        @if (Route::has('login'))
                             <li class="nav-item">
-                                <a href="{{ url('/home') }}" class="nav-link bordes text-white">Inicio</a>
+                                <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Iniciar Sesión') }}</a>
                             </li>
-                        @else
+                        @endif
+
+                        @if (Route::has('register'))
                             <li class="nav-item">
-                                <a href="{{ route('login') }}" class="nav-link bordes text-white">Iniciar Sesión</a>
+                                <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Registrarme') }}</a>
                             </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a href="{{ route('register') }}" class="nav-link bordes text-white">Registrarme</a>
-                                </li>
-                            @endif
-                        @endauth
-                    @endif
+                        @endif
+                    @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }}
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endguest
                 </ul>
             </div>
         </div>
@@ -207,7 +229,7 @@
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ asset('images/Musica.jpg') }}" class="d-block w-100" alt="...">
+                    <img src="https://fotografias.antena3.com/clipping/cmsimages01/2023/07/18/460974AC-1C0A-48FA-8582-EF2683B236BD/plantilla-entrada-festival-verano_98.jpg?crop=3000,1688,x0,y158&width=1900&height=1069&optimize=low&format=webply" class="d-block w-100" alt="...">
                 </div>
                 <div class="carousel-item">
                     <img src="https://assets-global.website-files.com/649327d3c75e7d5a080dfd24/6524731228e0e6cf2c3dc044_20231009T0924-740b7ee2-d6e1-4b58-b0f0-246bf3273896.jpeg" class="d-block w-100" alt="...">

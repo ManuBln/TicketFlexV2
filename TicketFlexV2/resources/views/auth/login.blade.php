@@ -5,14 +5,14 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="tarjeta">
-                    <div class="tarjeta-cabecera">{{ __('Iniciar Sesion') }}</div>
+                    <div class="tarjeta-cabecera">{{ __('Iniciar Sesión') }}</div>
 
                     <div class="tarjeta-cuerpo">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
                             <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Correo electronico') }}</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Correo electrónico') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email" class="formulario-control @error('email') es-invalido @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -26,7 +26,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Contrase単a') }}</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Contraseña') }}</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password" class="formulario-control @error('password') es-invalido @enderror" name="password" required autocomplete="current-password">
@@ -53,14 +53,14 @@
 
                             <div class="row mb-0">
                                 <div class="col-md-8 offset-md-4">
-                                    <button class="button_slide slide_right" type="submit">Iniciar Sesion</button>
+                                    <button class="button_slide slide_right" type="submit">Iniciar Sesión</button>
 
                                     </button>
                                     <br><br>
 
                                     @if (Route::has('password.request'))
                                         <a class="contrase単a-olvidada" href="{{ route('password.request') }}">
-                                            {{ __('Has olvidado tu contrase単a?') }}
+                                            {{ __('¿Has olvidado tu contraseña?') }}
                                         </a>
                                     @endif
                                 </div>
@@ -73,9 +73,16 @@
     </div>
 
     <style>
+        h1 {
+            font-family: 'ticketflex', sans-serif;
+            font-size: 7rem;
+            text-align: center;
+            color: white;
+            margin-bottom: 20px;
+        }
         .fondo-negro {
             color: #FFF;
-            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family:'Segoe UI', Tahoma,  Verdana, sans-serif;
             font-size: smaller;
             font-weight: bold;    }
 

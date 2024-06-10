@@ -4,6 +4,7 @@
     font-weight: normal;
     font-style: normal;
 }
+
 body {
     background-color: #121212;
     color: #ffffff;
@@ -12,6 +13,14 @@ body {
     padding: 0;
 }
 
+/* Contenedor general */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Sección Entradas */
 .entradas {
     padding: 20px;
     display: flex;
@@ -28,13 +37,13 @@ h2 {
     margin-bottom: 20px;
     font-size: 5rem;
 }
-h3{
+
+h3 {
     font-family: 'ticketflex', sans-serif;
     text-align: center;
     color: #ffffff;
     margin-bottom: 20px;
     font-size: 3rem;
-
 }
 
 .entrada {
@@ -45,13 +54,13 @@ h3{
     margin-bottom: 20px;
     overflow: hidden;
 }
+
 .entrada:hover {
     border-color: #e620d5; /* Cambia el color del borde al pasar el ratón */
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2); /* Aplica una sombra */
     transform: translateY(-5px); /* Eleva ligeramente la entrada */
     transition: all 0.3s; /* Añade una transición */
 }
-
 
 .entrada-content {
     display: flex;
@@ -74,11 +83,10 @@ h3{
 }
 
 .entrada-info:hover {
-    background: linear-gradient(300deg,#e620d5,#0c000a,#110111);
+    background: linear-gradient(300deg, #e620d5, #0c000a, #110111);
     background-size: 180% 180%;
     animation: gradient-animation 18s ease infinite;
 }
-
 
 @media (min-width: 768px) {
     .entrada-info {
@@ -92,12 +100,16 @@ h3{
     color: #ffffff;
     text-transform: uppercase;
 }
+
 .entrada-title:hover {
     color: #e620d5;
     transition: all 0.3s;
 }
 
-.entrada-price, .entrada-date, .entrada-description, .entrada-capacity {
+.entrada-price,
+.entrada-date,
+.entrada-description,
+.entrada-capacity {
     margin-bottom: 10px;
     color: #ffffff;
     text-align: left;
@@ -142,8 +154,8 @@ form {
         height: auto;
     }
 }
-/*--------------MERCHANDISING-----------------*/
 
+/* Sección Merchandising */
 
 .articulos {
     padding: 20px;
@@ -181,7 +193,7 @@ form {
     border-color: #e620d5;
     box-shadow: 0 4px 8px rgba(255, 255, 255, 0.2);
     transform: translateY(-5px);
-    background: linear-gradient(300deg,#e620d5,#0c000a,#110111);
+    background: linear-gradient(300deg, #e620d5, #0c000a, #110111);
     background-size: 180% 180%;
     animation: gradient-animation 18s ease infinite;
 }
@@ -217,7 +229,8 @@ form {
     text-align: center;
 }
 
-.merch-date, .merch-capacity {
+.merch-date,
+.merch-capacity {
     margin-bottom: 10px;
     color: #ffffff;
     text-align: center;
@@ -231,6 +244,9 @@ form {
     max-width: 150px;
     align-self: center; /* Centra la imagen dentro de la tarjeta */
 }
+
+/* Sección Drops */
+
 .drops {
     width: 100%;
     padding: 20px;
@@ -299,13 +315,14 @@ form {
     margin-bottom: 10px;
 }
 
-.drop-date, .drop-capacity {
+.drop-date,
+.drop-capacity {
     margin-bottom: 10px;
     color: white; /* Cambia el color del texto a blanco */
 }
 
+/* Carrito */
 
-/*--------------Carrito-----------------*/
 .cart-button {
     position: fixed;
     top: 20px;
@@ -333,7 +350,7 @@ form {
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
-    box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .sidebar .close-button {
@@ -381,7 +398,7 @@ button:hover {
     border-radius: 5px;
 }
 
-.dops-contenedor{
+.dops-contenedor {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -389,4 +406,84 @@ button:hover {
     align-items: stretch; /* Cambiado a stretch para igualar las alturas */
     align-content: center;
     gap: 20px;
+}
+
+/* Media Queries para mejor responsividad */
+
+@media (max-width: 1024px) {
+    .entrada {
+        width: 90%;
+    }
+
+    .merch {
+        width: 45%;
+    }
+
+    .drop {
+        width: 45%;
+    }
+}
+
+@media (max-width: 768px) {
+    .entrada-info {
+        padding: 20px;
+    }
+
+    .entrada-image {
+        height: 200px;
+    }
+
+    .merch {
+        width: 90%; /* Reduce el ancho de las tarjetas */
+        margin: 0 auto; /* Centra las tarjetas horizontalmente */
+    }
+
+    .drop {
+        width: 90%; /* Reduce el ancho de las tarjetas */
+        margin: 0 auto; /* Centra las tarjetas horizontalmente */
+    }
+
+    .articulitoss, .drop-container {
+        justify-content: center;
+    }
+}
+
+/* Media Queries para pantallas menores de 400px */
+
+@media (max-width: 400px) {
+    h2 {
+        font-size: 2.5rem; /* Reduce el tamaño de la fuente para h2 */
+    }
+
+    h3 {
+        font-size: 2rem; /* Reduce el tamaño de la fuente para h3 */
+    }
+
+    .entrada, .merch, .drop {
+        width: 100%; /* Asegura que las cartas ocupen el 100% del ancho */
+        margin: 0 auto; /* Centra las cartas horizontalmente */
+    }
+
+    .entrada-image, .merch-img, .drop-img {
+        height: 150px; /* Reduce la altura de las imágenes */
+    }
+
+    .button_slide {
+        padding: 10px 20px; /* Reduce el padding del botón */
+        font-size: 12px; /* Reduce el tamaño de la fuente del botón */
+    }
+
+    .entrada-title, .merch-title, .drop-title {
+        font-size: 1.2em; /* Reduce el tamaño de la fuente del título */
+    }
+
+    .entrada-price, .entrada-date, .entrada-description, .entrada-capacity,
+    .merch-price, .merch-date, .merch-capacity,
+    .drop-price, .drop-date, .drop-capacity {
+        font-size: 0.9em; /* Reduce el tamaño de la fuente de los detalles */
+    }
+
+    form {
+        margin-top: 5px;
+    }
 }

@@ -6,6 +6,7 @@ use App\Models\Articulo;
 use App\Models\Evento;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+
 class TiendaController extends Controller
 {
     //
@@ -24,17 +25,12 @@ class TiendaController extends Controller
         $cestaEvento = $request->session()->get('cestaEvento', []);
         $cestaArticulo = $request->session()->get('cestaArticulo', []);
 
-        // Obtener el último y el penúltimo artículo
-        $articuloActual = Articulo::orderBy('id', 'desc')->first();
-        $articuloAnterior = Articulo::where('id', '<', $articuloActual->id)->orderBy('id', 'desc')->first();
-
-
         $articulosConDrop = $articulos->filter(function ($articulo) {
-            return Str::startsWith($articulo->nombre, 'Drop');
+            return Str::startsWith($articulo->nombre, 'Drop') || Str::startsWith($articulo->nombre, 'Paquete de Merch');
         });
 
         $articulosSinDrop = $articulos->reject(function ($articulo) {
-            return Str::startsWith($articulo->nombre, 'Drop');
+            return Str::startsWith($articulo->nombre, 'Drop') || Str::startsWith($articulo->nombre, 'Paquete de Merch');
         });
 
         return view('tienda')->with([
@@ -42,15 +38,13 @@ class TiendaController extends Controller
             'articulos' => $articulos,
             'cestaEvento' => $cestaEvento,
             'cestaArticulo' => $cestaArticulo,
-            'articuloActual' => $articuloActual,
-            'articuloAnterior' => $articuloAnterior,
             'articulosConDrop' => $articulosConDrop,
             'articulosSinDrop' => $articulosSinDrop
         ]); // Pasar las variables a la vista
     }
 
 
-    public function cestaEntrada(Request $request, String $nombre)
+    public function cestaEntrada(Request $request, string $nombre)
     {
         $evento = Evento::where('nombre_evento', $nombre)->first();
 
@@ -65,7 +59,7 @@ class TiendaController extends Controller
         return redirect()->back();
     }
 
-    public function cestaArticulo(Request $request, String $nombre)
+    public function cestaArticulo(Request $request, string $nombre)
     {
         $articulo = Articulo::where('nombre', $nombre)->first();
 
@@ -79,8 +73,6 @@ class TiendaController extends Controller
         $request->session()->flash('mensaje', 'Artículo añadido a la cesta');
         return redirect()->back();
     }
-
-
 
 
 }
