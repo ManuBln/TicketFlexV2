@@ -19,7 +19,7 @@
             height: 100vh;
             margin: 0;
             background-color: black;
-            color: white; /* Para que el texto también sea visible en el fondo negro */
+            color: white; 
         }
 
         h1 {
@@ -31,10 +31,11 @@
         }
 
         #qr-video {
-            border: 2px solid white; /* Opcional: para agregar un borde blanco al video */
+            border: 2px solid white; 
         }
 
         #result {
+            font-family:'ticketflex', sans-serif;
             position: absolute;
             bottom: 20px;
             width: 100%;
@@ -47,7 +48,7 @@
 <video id="qr-video" width="640" height="480" autoplay></video>
 <div id="result">Esperando un código QR...</div>
 <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
-<script src="{{ asset('js\qrportero.js') }}"></script>
+<script src="{{ asset('js/qrportero.js') }}"></script>
 
 </body>
 
