@@ -31,8 +31,12 @@ Para poblar la base de datos, ejecuta los siguientes comandos en el siguiente or
     php artisan db:seed --class=EventosSeeder
     ```
 
-## Ejecutar el servidor de desarrollo
+## Compilar y optimizar código
 
 Para lanzar el servidor de Vite, ejecuta:
 ```sh
-npm run dev
+npm run build
+
+```
+## Lanzar Laravel a producción
+php artisan serve --host=0.0.0.0 --port=80php artisan serve --host=0.0.0.0 --port=80
