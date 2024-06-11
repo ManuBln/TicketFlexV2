@@ -105,7 +105,7 @@
         <h2>Entradas Seleccionadas:</h2>
         @foreach($data['entrada_seleccionada'] as $entrada)
             <p>{{ $entrada['nombre'] ?? 'Nombre no disponible' }} - Precio: {{ $entrada['precio'] ?? 'Precio no disponible' }}$</p>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Commons_QR_code.png" alt="">
+            <img src="https://www.codigos-qr.com/qr/php/qr_img.php?d=7365483955839374&s=6&e=" alt="imagen qr">
         @endforeach
     @else
         <p>No hay entradas seleccionadas.</p>
